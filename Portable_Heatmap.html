@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+
+<title>Temperature Heatmaps</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="customdarkblue.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">Temperature Heatmaps</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Temperature Heatmaps</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#foreword"><em>Foreword</em></a></li>
+      <li><a href="#introduction">1. Introduction</a></li>
+      <li><a href="#selecting-the-output-data">2. Selecting the output data</a></li>
+      <li><a href="#heatmaps">3. Heatmaps</a></li>
+      <li><a href="#conclusion">4. Conclusion</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="foreword" class="section level2">
+<h2><em>Foreword</em></h2>
+<p>This document references the R file titled <code>portable_heatmap_graph</code>. Before looking through the source code for this file, please look through the <a href="https://bozybryan.github.io/innosparks/General_Analysis.html"><strong>Airbitat Portable Documentation</strong></a> to understand the parameters evaluated here.</p>
+<hr />
+</div>
+<div id="introduction" class="section level1">
+<h1>1. Introduction</h1>
+<p>This heatmap analysis code is <strong>designed to run right after</strong> the <code>portable_multiunit_analysis</code> code is run, as certain variables created by the earlier analysis file will be called upon by this script. If one tries to proceed with this code without having done the earlier analysis, the code will not run.</p>
+<hr />
+</div>
+<div id="selecting-the-output-data" class="section level1">
+<h1>2. Selecting the output data</h1>
+<p>As the graphs produced by analysis are broken down by individual months, the code will look like this at the start:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  ll =<span class="st"> </span><span class="kw">length</span>(splitdata)
+  nn =<span class="st"> </span><span class="kw">c</span>()
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ll){
+    mm =<span class="st"> </span><span class="kw">names</span>(splitdata)[i]
+    mm =<span class="st"> </span><span class="kw">paste</span>(<span class="kw">substr</span>(mm,<span class="dv">1</span>,<span class="dv">4</span>),<span class="kw">substr</span>(mm,<span class="dv">5</span>,<span class="dv">6</span>),<span class="dt">sep=</span><span class="st">&quot;-&quot;</span>)
+    month_name =<span class="st"> </span><span class="kw">format</span>(<span class="kw">as.Date</span>(<span class="kw">paste</span>(mm,<span class="dv">11</span>,<span class="dt">sep=</span><span class="st">&quot;-&quot;</span>)), <span class="st">&quot;%b %y&quot;</span>)
+    nn =<span class="st"> </span><span class="kw">c</span>(nn,month_name)
+  }
+  nn =<span class="st"> </span><span class="kw">t</span>(<span class="kw">t</span>(nn))
+  <span class="kw">colnames</span>(nn) =<span class="st"> &quot;The months present are&quot;</span>
+  <span class="kw">print</span>(nn)
+  i =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Which month would you like to see (select a number between 1 and %s):&quot;</span>,ll))
+  i =<span class="st"> </span><span class="kw">as.integer</span>(i)</code></pre></div>
+<center>
+<strong>Fig 2.1a - Introduction Code</strong>
+</center>
+<p><br></p>
+<p>What’s happening here is that the code is extracting out all the possible months covered in the dataset. In the case of the same Cloud9 dataset discussed in the other documentation, the data extracted is from March 2018 till July 2018. Hence the output looks like this:</p>
+<pre><code>##      The months present are
+## [1,] &quot;Mar 18&quot;              
+## [2,] &quot;Apr 18&quot;              
+## [3,] &quot;May 18&quot;              
+## [4,] &quot;Jun 18&quot;              
+## [5,] &quot;Jul 18&quot;</code></pre>
+<pre><code>## [1] &quot;Which month would you like to see (select a number between 1 and 5)&quot;</code></pre>
+<center>
+<strong>Fig 2.1b - Introduction Code Output</strong>
+</center>
+<p><br></p>
+<p>Here we see all the individual months possible for the code to plot later. Thereafter the code will prompt the user to key in which particular month they would like to see, and will accept a <strong>numerical input only</strong>. The numbers correspond to the month as seen (<strong>1</strong> for March 2018, <strong>2</strong> for April 2018 etc.). If any other incorrect input is put inside the code will just return the 1st month in the dataset.</p>
+<p>Here, we key in the number 2 for example, that corresponds to April 2018.</p>
+<hr />
+</div>
+<div id="heatmaps" class="section level1">
+<h1>3. Heatmaps</h1>
+<p>A heatmap describes a dataset by three dimensions, in this case its going to describe various temperatures by time of day, and date of the month. It’s a very useful way to observe large data trends at a glance, and more information can be found <a href="https://www.optimizely.com/optimization-glossary/heatmap/">here</a>.</p>
+<p>Here, we evaluate four important parameters to plot into heatmaps.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heatmap1 =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Tank_Temperature&quot;</span> =<span class="st"> </span>splitdata[[i]]<span class="op">$</span>Tank_Temperature,
+                      <span class="st">&quot;Outlet_Temperature&quot;</span> =<span class="st"> </span>splitdata[[i]]<span class="op">$</span>Outlet_Temperature,
+                      <span class="st">&quot;Wet_Bulb_Efficiency&quot;</span> =<span class="st"> </span>splitdata[[i]]<span class="op">$</span>Wet_Bulb_Efficiency,
+                      <span class="st">&quot;TTank_WbT&quot;</span> =<span class="st"> </span>splitdata[[i]]<span class="op">$</span>TTank_WbT,
+                      <span class="st">&quot;Hour&quot;</span> =<span class="st"> </span>splitdata[[i]]<span class="op">$</span>Hour,
+                      <span class="st">&quot;Day&quot;</span> =<span class="st"> </span>splitdata[[i]]<span class="op">$</span>Day)
+
+heatmap1<span class="op">$</span>Hour[heatmap1<span class="op">$</span>Hour<span class="op">==</span><span class="dv">0</span>] =<span class="st"> </span><span class="dv">24</span>
+
+hour_list =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">names</span>(<span class="kw">table</span>(heatmap1<span class="op">$</span>Hour)))
+day_list =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">31</span>)
+
+g1a =<span class="st"> </span><span class="kw">ggplot</span>(heatmap1, <span class="kw">aes</span>(Hour,Day))<span class="op">+</span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Tank_Temperature), <span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;lavenderblush3&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;green4&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Hour&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Day&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;Temperature&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">limits =</span> hour_list) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_discrete</span>(<span class="dt">limits =</span> day_list) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> day_list) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="kw">sprintf</span>(<span class="st">&quot;Tank Temperature for %s&quot;</span>,month_name)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>),
+        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
+        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
+        <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">16</span>))</code></pre></div>
+<center>
+<strong>Fig 3.1 - Code for Heatmaps</strong>
+</center>
+<p><br></p>
+<p>The four paramters evaluated are:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Output Temperature</strong>: Temperature of the outgoing air</li>
+<li><strong>Wet Bulb Efficiency</strong>: Overall cooling performance of the unit, expected to see &gt;100%</li>
+<li><strong>Tank Temperature</strong>: Temperature of the water tank</li>
+<li><strong>(Tank Temperature - Wet Bulb Temperature)</strong>: Theoretical maximum amount of cooling possible (i.e. = 0 if perfect cooling is achieved)</li>
+</ol>
+<p>From the code above, we produce heatmaps that look like such below. Let’s take a look at the heatmaps of Cloud9 in April 2018:</p>
+<div id="section" class="section level4 tabset">
+<h4></h4>
+<div id="tank-temperature" class="section level5">
+<h5>Tank Temperature</h5>
+<center>
+<img src="Portable_Heatmap_files/figure-html/unnamed-chunk-4-1.png" width="1056" />
+</center>
+</div>
+<div id="outlet-temperature" class="section level5">
+<h5>Outlet Temperature</h5>
+<center>
+<img src="Portable_Heatmap_files/figure-html/unnamed-chunk-5-1.png" width="1056" />
+</center>
+</div>
+<div id="tank-temperature---wet-bulb-temperature" class="section level5">
+<h5>(Tank Temperature - Wet Bulb Temperature)</h5>
+<center>
+<img src="Portable_Heatmap_files/figure-html/unnamed-chunk-6-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-1" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 3.2 - Heatmaps of Cloud9 in April 2018</strong>
+</center>
+<p><br></p>
+<p>The colour scale is produced automatically. As we can see here, there is some colour spots missing from the days 7,8 and 14,15 and so on. This simply means that the data is not present, and we can deduce that the unit was probably turned off on those days (these particular days correspond to weekends, which might be a customization of the portable unit by the customer). Otherwise, the rest of the data is self-explanatory, with higher temperatures corresponding to darker colours.</p>
+<p>There is a common exception to this colour rule seen in the wet bulb efficiency:</p>
+<center>
+<img src="Portable_Heatmap_files/figure-html/unnamed-chunk-7-1.png" width="1056" /> <strong>Fig 3.3 - Wet Bulb Efficiency in April 2018</strong>
+</center>
+<p><br></p>
+<p>Here, we can observe some spots that appear black, and is not reflected in the legend on the right. Because the legend is automatically produced to include the bulk of the data set (i.e. outliers that belong to the 5th and 95th percentile of the wet bulb efficiencies will not be colour-coded), these black spots actually correspond to these very outliers. More likely than not, these outliers are usually far less than a wet bulb efficiency of 80%, and usually happen either on a very rainy day or when the unit is under repair.</p>
+<hr />
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>4. Conclusion</h1>
+<p>The four graphs produced by the code are automatically saved into the same graph directory folder in the desktop. This code can be run <strong>as many times as necessary</strong> to see the other months; simply click the <code>source</code> button again and key in a different number when prompted.</p>
+<p>This heatmap code is designed to only produce graphs of one selected month because four graphs are produced for each month - hence if it automatically produced every month for a data set that had for example 10 months, then 40 graphs would be produced which might drastically slow down the computer. Happy coding!</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 7 December 2018</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+
+<title>General Documentation</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="customdarkblue.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">General Documentation</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">General Documentation</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#foreword"><em>Foreword</em></a></li>
+      <li><a href="#introduction">1. Introduction</a></li>
+      <li><a href="#setting-up">2. Setting Up</a></li>
+      <li><a href="#humidity-groups">3. Humidity Groups</a></li>
+      <li><a href="#outlet-ambient-power-and-performance-data">4. Outlet, Ambient, Power and Performance Data</a></li>
+      <li><a href="#wet-bulb-outlet-and-ambient-temperature-boxplots">5. Wet Bulb, Outlet and Ambient Temperature Boxplots</a></li>
+      <li><a href="#water-consumption">6. Water Consumption</a></li>
+      <li><a href="#combined-data-plots">7. Combined Data Plots</a></li>
+      <li><a href="#delta-temperature-values">8. Delta Temperature Values</a></li>
+      <li><a href="#exporting-data">9. Exporting Data</a></li>
+      <li><a href="#conclusion">10. Conclusion</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="foreword" class="section level2">
+<h2><em>Foreword</em></h2>
+<p>This document references the standalone R file titled <code>portable_multiunit_analysis</code>.</p>
+<hr />
+</div>
+<div id="introduction" class="section level1">
+<h1>1. Introduction</h1>
+<p>I thought I’d be a good idea to make a comprehensive data analysis file for the portable unit. This document serves to:</p>
+<ul>
+<li>Break down each parameter analysed by the code</li>
+<li>Explain what quantitative methods are used</li>
+<li>How the data can be intepreted</li>
+</ul>
+<p>With that in mind, this document can also be a quick guide to R, and how to troubleshoot should issues arise in the data analysis.</p>
+<hr />
+</div>
+<div id="setting-up" class="section level1">
+<h1>2. Setting Up</h1>
+<p>Today’s document set will be utilising data compiled from two of Cloud9’s portable units.</p>
+<p>First, we need to import and extract the data we need to use. We first need to import the relevant libraries, then run a check:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fulldata =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Work Folder/External SD Data/Cloud9 Data/Full Data/fulldata.csv&quot;</span>)
+n =<span class="st"> </span><span class="kw">readline</span>(<span class="dt">prompt =</span> <span class="st">&quot;Number of portable units:&quot;</span>)
+n =<span class="st"> </span><span class="kw">as.integer</span>(n)
+
+old_date =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span>Date)
+old_date =<span class="st"> </span><span class="kw">na.omit</span>(old_date)
+old_date =<span class="st"> </span><span class="kw">min</span>(old_date)
+<span class="cf">if</span>(<span class="kw">exists</span>(<span class="st">&quot;fulldata&quot;</span>) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>){
+  <span class="kw">print</span>(<span class="st">&quot;File directory is incorrect, please specify the correct folder.&quot;</span>)
+}<span class="cf">else</span> <span class="cf">if</span> (old_date <span class="op">&lt;=</span><span class="st"> </span><span class="dv">20150101</span>){
+    <span class="kw">print</span>(<span class="st">&quot;Incorrect data files compiled (Remove 2000/01/01 data file when combining CSV)&quot;</span>)
+}<span class="cf">else</span> <span class="cf">if</span> (n<span class="op">==</span><span class="st">&quot;&quot;</span>){
+  <span class="kw">print</span>(<span class="st">&quot;Number of units not defined. Please specify number of units.&quot;</span>)}</code></pre></div>
+<center>
+<strong>Fig 2.1 - Reading from data</strong>
+</center>
+<p><br></p>
+<p>We are essentially reading the data file from the work folder, which in this case is a <strong>.csv</strong> file. Other file extensions are also supported in R.</p>
+<p>Thereafter, a check is performed to ensure that the following rules are not broken</p>
+<ul>
+<li>File directory is the correct one</li>
+<li>No <em>bad</em> data is compiled, files must be <strong>strictly</strong> Portable Airbitat data (i.e. 00082120180220.csv)</li>
+<li>Number of units are specified - it is so that this file can run an analysis when multiple units worth of data are compiled</li>
+</ul>
+<p>Next, we extract the day and month of the data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fulldata<span class="op">$</span>Month =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">substr</span>(fulldata<span class="op">$</span>Date,<span class="dv">5</span>,<span class="dv">6</span>))
+fulldata<span class="op">$</span>Day =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">substr</span>(fulldata<span class="op">$</span>Date,<span class="dv">7</span>,<span class="dv">8</span>))
+  
+waterdata =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Month&quot;</span> =<span class="st"> </span><span class="kw">as.factor</span>(fulldata<span class="op">$</span>Month),
+                       <span class="st">&quot;Day&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span>Day),
+                       <span class="st">&quot;Date&quot;</span> =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(fulldata<span class="op">$</span>Date),<span class="st">&quot;%Y%m%d&quot;</span>),
+                       <span class="st">&quot;Inlet_Valve&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Inlet Valve Status</span><span class="st">`</span>))
+
+waterdata =<span class="st"> </span><span class="kw">split</span>(waterdata,waterdata<span class="op">$</span>Month)</code></pre></div>
+<center>
+<strong>Fig 2.2a - Organising Data</strong>
+</center>
+<p><br></p>
+<p>Lastly, we remove irrelevant data from the extracted data set:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fulldata =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Data Validity</span><span class="st">`</span><span class="op">!=</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Submersible Pump Status</span><span class="st">`</span><span class="op">!=</span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">High Capacity Pump Status</span><span class="st">`</span><span class="op">!=</span><span class="dv">0</span>)
+fulldata<span class="op">$</span><span class="st">`</span><span class="dt">WetBulb Efficiency</span><span class="st">`</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">WetBulb Efficiency</span><span class="st">`</span>)
+fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Fan 2 Speed</span><span class="st">`</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Fan 2 Speed</span><span class="st">`</span>)
+fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Wet bulb</span><span class="st">`</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Wet bulb</span><span class="st">`</span>)
+fulldata =<span class="st"> </span><span class="kw">na.omit</span>(fulldata)
+fulldata =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Fan 2 Speed</span><span class="st">`</span> <span class="op">&gt;</span><span class="dv">950</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Fan 2 Speed</span><span class="st">`</span> <span class="op">&lt;</span><span class="dv">3000</span>)
+fulldata =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Wet bulb</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>)
+fulldata =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">WetBulb Efficiency</span><span class="st">`</span> <span class="op">&lt;</span><span class="dv">160</span>)</code></pre></div>
+<center>
+<strong>Fig 2.2b - Organising Data</strong>
+</center>
+<p><br></p>
+<p>Irrelevent data includes those that fulfil the following criteria:</p>
+<ul>
+<li>When the <span style="color:blue">High Cap Pump</span> and <span style="color:blue">submersible pump</span> is <strong>off</strong></li>
+<li>When the <span style="color:blue">MCU Fans</span> have <strong>not reached full power</strong>, or there is <strong>too high of a fan speed</strong> (perhaps from current surging or running tests)</li>
+<li>When <span style="color:blue">Wet Bulb Temperatures</span> is less than 20, and <span style="color:blue">Wet Bulb Efficiency</span> is less than 160% (to remove errorneous sensor data)</li>
+</ul>
+<p>I’ll be getting a little ahead of myself here (so bear with me!), but this next section basically sets up the code to create data sets that will evaluate and find important data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  sdata =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Outlet_Temperature&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Outlet air temp</span><span class="st">`</span>),
+                     <span class="st">&quot;Ambient_Temperature&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Ambient Temp</span><span class="st">`</span>),
+                     <span class="st">&quot;Ambient_Humidity&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Ambient Humi</span><span class="st">`</span>),
+                     <span class="st">&quot;Wet_Bulb_Efficiency&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">WetBulb Efficiency</span><span class="st">`</span>),
+                     <span class="st">&quot;Power&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Power Consumption</span><span class="st">`</span>),
+                     <span class="st">&quot;Tank_Temperature&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(fulldata<span class="op">$</span><span class="st">`</span><span class="dt">Water tank temp</span><span class="st">`</span>),
+                     <span class="st">&quot;Year_Month&quot;</span> =<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">substr</span>(fulldata<span class="op">$</span>Date,<span class="dv">1</span>,<span class="dv">6</span>)))
+  
+  sdata<span class="op">$</span>Delta_T =<span class="st"> </span>(sdata<span class="op">$</span>Ambient_Temperature <span class="op">-</span><span class="st"> </span>sdata<span class="op">$</span>Outlet_Temperature)
+  sdata<span class="op">$</span>Date =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(fulldata<span class="op">$</span>Date),<span class="st">&quot;%Y%m%d&quot;</span>)
+  
+  splitdata =<span class="st"> </span><span class="kw">split</span>(sdata,sdata<span class="op">$</span>Year_Month)</code></pre></div>
+<center>
+<strong>Fig 2.3 - Final Set Up</strong>
+</center>
+<p><br></p>
+<p>In this section, we’ve basicially split up all the relevant parameters (like Outlet Temperature etc.) in terms of their <em>dates</em>, because we want to find out how these parameters change over the course of the operating life of the portable unit.</p>
+<p>Let’s take a look at how a portion of the final, organised data set looks like:</p>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Outlet_Temperature
+</th>
+<th style="text-align:right;">
+Ambient_Temperature
+</th>
+<th style="text-align:right;">
+Ambient_Humidity
+</th>
+<th style="text-align:right;">
+Wet_Bulb_Temperature
+</th>
+<th style="text-align:right;">
+Wet_Bulb_Efficiency
+</th>
+<th style="text-align:right;">
+Power
+</th>
+<th style="text-align:right;">
+Tank_Temperature
+</th>
+<th style="text-align:left;">
+Year_Month
+</th>
+<th style="text-align:right;">
+Hour
+</th>
+<th style="text-align:right;">
+Day
+</th>
+<th style="text-align:right;">
+Delta_T
+</th>
+<th style="text-align:right;">
+WbT_Tout
+</th>
+<th style="text-align:right;">
+TTank_Tout
+</th>
+<th style="text-align:right;">
+TTank_WbT
+</th>
+<th style="text-align:left;">
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+24.4
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+76.4
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+1221
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+-0.3
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.3
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+75.1
+</td>
+<td style="text-align:right;">
+23.9
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+1237
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+-0.4
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.3
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+75.8
+</td>
+<td style="text-align:right;">
+24.0
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+1225
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+-0.3
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.3
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+76.0
+</td>
+<td style="text-align:right;">
+24.0
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+1235
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+-0.3
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.4
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+76.4
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+1233
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+-0.3
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.4
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+76.2
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+1197
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+-0.3
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.5
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+76.7
+</td>
+<td style="text-align:right;">
+24.1
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+1220
+</td>
+<td style="text-align:right;">
+25.5
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+-0.4
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.5
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+<td style="text-align:right;">
+77.1
+</td>
+<td style="text-align:right;">
+24.3
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+1225
+</td>
+<td style="text-align:right;">
+25.5
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+-0.2
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.6
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+<td style="text-align:right;">
+76.7
+</td>
+<td style="text-align:right;">
+24.2
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+1219
+</td>
+<td style="text-align:right;">
+25.6
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+-0.4
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24.4
+</td>
+<td style="text-align:right;">
+27.5
+</td>
+<td style="text-align:right;">
+75.1
+</td>
+<td style="text-align:right;">
+24.0
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+1210
+</td>
+<td style="text-align:right;">
+25.6
+</td>
+<td style="text-align:left;">
+201803
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+<td style="text-align:right;">
+-0.4
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 2.4 - Sample of Final Data</strong>
+</center>
+<p><br></p>
+<hr />
+</div>
+<div id="humidity-groups" class="section level1">
+<h1>3. Humidity Groups</h1>
+<p>An important factor that influences wet bulb performance is humidity of the surrounding air. As humidity increases, the so-called <em>“cooling power”</em> of the portable drops, or otherwise known as <strong>Wet Bulb Performance</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  Group1 =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&lt;</span><span class="dv">60</span>)
+  Group1<span class="op">$</span><span class="st">`</span><span class="dt">Humidity_Group</span><span class="st">`</span> =<span class="st"> &quot;&lt;60&quot;</span>
+  Group2 =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&gt;=</span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&lt;</span><span class="dv">70</span>)
+  Group2<span class="op">$</span><span class="st">`</span><span class="dt">Humidity_Group</span><span class="st">`</span> =<span class="st"> &quot;&gt;60-70&quot;</span>
+  Group3 =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&gt;=</span><span class="dv">70</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&lt;</span><span class="dv">80</span>)
+  Group3<span class="op">$</span><span class="st">`</span><span class="dt">Humidity_Group</span><span class="st">`</span> =<span class="st"> &quot;&gt;70-80&quot;</span>
+  Group4 =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&gt;=</span><span class="dv">80</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Ambient Humi</span><span class="st">`</span> <span class="op">&lt;</span><span class="dv">100</span>)
+  <span class="cf">if</span>(<span class="kw">nrow</span>(Group4) <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>){
+    Group4<span class="op">$</span><span class="st">`</span><span class="dt">Humidity_Group</span><span class="st">`</span> =<span class="st"> &quot;&gt;80&quot;</span>
+    colour_spec =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lightskyblue1&quot;</span>,<span class="st">&quot;skyblue2&quot;</span>,<span class="st">&quot;steelblue3&quot;</span>,<span class="st">&quot;dodgerblue4&quot;</span>)
+  }<span class="cf">else</span>{
+    colour_spec =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lightskyblue1&quot;</span>,<span class="st">&quot;skyblue2&quot;</span>,<span class="st">&quot;steelblue3&quot;</span>)
+  }</code></pre></div>
+<center>
+<strong>Fig 3.1 - Organising by Humidity Groups</strong>
+</center>
+<p><br></p>
+<p>First, we split the incoming data according to their humidity profiles, from a relative humidity of 60% to 100%, in 10% increments. We hence create <strong>four</strong> groups.</p>
+<p>Thereafter, we want to find out <em>how many</em> data points reside in each group. This gives us an idea about the expected performance of the place, and the ambient conditions of the unit.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  Gavg =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">rbind</span>(G1avg,G2avg,G3avg,G4avg))
+<span class="kw">colnames</span>(Gavg) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Number of Humidity Points&quot;</span>, <span class="st">&quot;Percentage of Total Humidity&quot;</span>, <span class="st">&quot;Average Output Temperature&quot;</span>, <span class="st">&quot;Average Wet Bulb Efficiency&quot;</span>, <span class="st">&quot;Average Delta T&quot;</span>)
+<span class="kw">rownames</span>(Gavg) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;&lt;60%&quot;</span>, <span class="st">&quot;60-70%&quot;</span>, <span class="st">&quot;70-80%&quot;</span>, <span class="st">&quot;&gt;80%&quot;</span>)
+
+  Gavg<span class="op">$</span><span class="st">`</span><span class="dt">Average Output Temperature</span><span class="st">`</span> =<span class="st"> </span><span class="kw">round</span>(Gavg<span class="op">$</span><span class="st">`</span><span class="dt">Average Output Temperature</span><span class="st">`</span>,<span class="dt">digits =</span> <span class="dv">1</span>)
+  Gavg<span class="op">$</span><span class="st">`</span><span class="dt">Average Wet Bulb Efficiency</span><span class="st">`</span> =<span class="st"> </span><span class="kw">round</span>(Gavg<span class="op">$</span><span class="st">`</span><span class="dt">Average Wet Bulb Efficiency</span><span class="st">`</span>, <span class="dt">digits =</span> <span class="dv">0</span>)
+  Gavg<span class="op">$</span><span class="st">`</span><span class="dt">Average Delta T</span><span class="st">`</span> =<span class="st"> </span><span class="kw">round</span>(Gavg<span class="op">$</span><span class="st">`</span><span class="dt">Average Delta T</span><span class="st">`</span>, <span class="dt">digits =</span> <span class="dv">1</span>)</code></pre></div>
+<center>
+<strong>Fig 3.2 - Producing Humidity Information</strong>
+</center>
+<p><br></p>
+<p>And the final data looks a little like this:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Number of Humidity Points
+</th>
+<th style="text-align:right;">
+Percentage of Total Humidity
+</th>
+<th style="text-align:right;">
+Average Output Temperature
+</th>
+<th style="text-align:right;">
+Average Wet Bulb Efficiency
+</th>
+<th style="text-align:right;">
+Average Delta T
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+&lt;60%
+</td>
+<td style="text-align:right;">
+5444
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+24.8
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+7.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60-70%
+</td>
+<td style="text-align:right;">
+40473
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+25.2
+</td>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:right;">
+5.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70-80%
+</td>
+<td style="text-align:right;">
+65440
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+&gt;80%
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NaN
+</td>
+<td style="text-align:right;">
+NaN
+</td>
+<td style="text-align:right;">
+NaN
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 3.3 - Humidity Information</strong>
+</center>
+<p><br></p>
+<p>As we can observe:</p>
+<ul>
+<li>This place tends to be humid, with <strong>59%</strong> of data points having a relative humidity of 70 - 80%.</li>
+<li>Average wet bulb efficiency tends to <em>decrease</em> as relative humidity goes up (click the right arrow on the table above to see more.)</li>
+<li>There are no humidity points above 80%</li>
+</ul>
+<hr />
+</div>
+<div id="outlet-ambient-power-and-performance-data" class="section level1">
+<h1>4. Outlet, Ambient, Power and Performance Data</h1>
+<p>Recall in the previous section when we split the relevant parameters according to their dates. Now, we want to find out the entire day’s average for the date (e.g. finding the average Outlet temperature of any given day as one point), and thereafter prepare to plot out all the averages into graphs.</p>
+<p>Quick recap of the parameters we are looking at:</p>
+<ul>
+<li><strong><span style="color:red">Power</span></strong> - Daily Power Consumption (kW) of the unit</li>
+<li><strong><span style="color:red">Outlet Temperature</span></strong> - Temperature of the air produced by the unit, it should be much colder than the ambient temperature</li>
+<li><strong><span style="color:red">Ambient Temperature</span></strong> - Temperature of the surrounding air</li>
+<li><strong><span style="color:red">Delta Temperature</span></strong> - Represents the <em>difference</em> between the outlet and ambient air temperatures</li>
+<li><strong><span style="color:red">Wet Bulb Efficiency</span></strong> - Represents the cooling performance of the unit. A useful introduction to this concept can be found <a href="https://www.engineeringtoolbox.com/cooling-tower-efficiency-d_699.html">here</a>.</li>
+<li><strong><span style="color:red">Tank Temperature</span></strong> - Temperature of the water in the tank, usually a little warmer than the outlet air temperature.</li>
+<li><strong><span style="color:red">Water Consumption</span></strong> - Daily amount of water (litres) used by the unit</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>imax){
+    a1 =<span class="st"> </span>splitdata[[i]]
+    mean_power =<span class="st"> </span><span class="kw">aggregate</span>(Power<span class="op">~</span>Date,<span class="dt">data=</span>a1,mean)
+    power_list =<span class="st"> </span><span class="kw">rbind</span>(power_list,mean_power)
+    
+    mean_outtemp =<span class="st"> </span><span class="kw">aggregate</span>(Outlet_Temperature<span class="op">~</span>Date,<span class="dt">data=</span>a1,mean)
+    outlet_temp_list =<span class="st"> </span><span class="kw">rbind</span>(outlet_temp_list,mean_outtemp)
+    
+    mean_amb =<span class="st"> </span><span class="kw">aggregate</span>(Ambient_Temperature<span class="op">~</span>Date,<span class="dt">data=</span>a1,mean)
+    amb_temp_list =<span class="st"> </span><span class="kw">rbind</span>(amb_temp_list,mean_amb)
+    
+    mean_delta =<span class="st"> </span><span class="kw">aggregate</span>(Delta_T<span class="op">~</span>Date,<span class="dt">data=</span>a1,mean)
+    delta_list =<span class="st"> </span><span class="kw">rbind</span>(delta_list,mean_delta)
+    
+    mean_wb =<span class="st"> </span><span class="kw">aggregate</span>(Wet_Bulb_Efficiency<span class="op">~</span>Date,<span class="dt">data=</span>a1,mean)
+    wb_list =<span class="st"> </span><span class="kw">rbind</span>(wb_list,mean_wb)
+    
+    mean_tank =<span class="st"> </span><span class="kw">aggregate</span>(Tank_Temperature<span class="op">~</span>Date,<span class="dt">data=</span>a1,mean)
+    tank_list =<span class="st"> </span><span class="kw">rbind</span>(tank_list,mean_tank)
+  }</code></pre></div>
+<center>
+<strong>Fig 4.1 - Finding daily parameters</strong>
+</center>
+<p><br></p>
+<p>Let’s illustrate what’s happening here using the Ambient Temperature for example. The code takes one entire day’s worth of data (about 3000 or so points) and finds the average to produce one point per day. We then repeat this with every single day, for every single parameter measured.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  x3 =<span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>(<span class="kw">mean</span>(amb_temp_list<span class="op">$</span>Ambient_Temperature))
+  p3=<span class="kw">ggplot</span>(amb_temp_list, <span class="kw">aes</span>(<span class="dt">x=</span>Date, <span class="dt">y=</span>Ambient_Temperature)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">span =</span> x3, <span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">colour =</span> <span class="st">&quot;lightcoral&quot;</span>, <span class="dt">size =</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Daily Ambient Temperature&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;Temperature [&quot;</span>,degree,<span class="st">&quot;C]&quot;</span>)))
+  g3 =<span class="st"> </span>p3<span class="op">+</span><span class="kw">scale_x_date</span>(<span class="dt">date_labels =</span> <span class="st">&quot;%b %y&quot;</span>, <span class="dt">date_breaks =</span> <span class="st">&quot;1 month&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(f_Temp,c_Temp,<span class="dv">1</span>))<span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),
+                     <span class="dt">panel.grid.major.x =</span> <span class="kw">element_blank</span>(),
+                     <span class="dt">panel.border =</span> <span class="kw">element_blank</span>(),<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">18</span>),
+                     <span class="dt">axis.line.x =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>),
+                     <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(f_Temp,c_Temp))
+  
+  c_Delta =<span class="st"> </span><span class="kw">ceiling</span>(<span class="kw">max</span>(delta_list<span class="op">$</span>Delta_T))<span class="op">+</span><span class="dv">2</span> 
+  f_Delta =<span class="st"> </span><span class="kw">floor</span>(<span class="kw">min</span>(delta_list<span class="op">$</span>Delta_T))<span class="op">-</span><span class="dv">1</span></code></pre></div>
+<p><br></p>
+<p>In the end, we plot a <strong>best fit curve</strong> through all the points and produce graphs corresponding to each parameter. Let’s take a look at how the best fit curves look like: <br></p>
+<div id="section" class="section level4 tabset">
+<h4></h4>
+<div id="ambient-temperature" class="section level5">
+<h5>Ambient Temperature</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-11-1.png" width="1056" />
+</center>
+</div>
+<div id="output-temperature" class="section level5">
+<h5>Output Temperature</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-12-1.png" width="1056" />
+</center>
+</div>
+<div id="tank-temperature" class="section level5">
+<h5>Tank Temperature</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-13-1.png" width="1056" />
+</center>
+</div>
+<div id="power-consumption" class="section level5">
+<h5>Power Consumption</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-14-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-1" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 4.2 - Best Fit Lines</strong>
+</center>
+<hr />
+</div>
+</div>
+<div id="wet-bulb-outlet-and-ambient-temperature-boxplots" class="section level1">
+<h1>5. Wet Bulb, Outlet and Ambient Temperature Boxplots</h1>
+<p>We also plot out boxplots of the data. Let’s just take a quick look at the code for wet bulb specifically:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Wet_Bulb_Median =<span class="st"> </span><span class="kw">aggregate</span>(<span class="st">`</span><span class="dt">Wet_Bulb_Efficiency</span><span class="st">`</span> <span class="op">~</span><span class="st"> `</span><span class="dt">Year_Month</span><span class="st">`</span>, sdata, median)
+  Wet_Bulb_Mean =<span class="st"> </span><span class="kw">aggregate</span>(<span class="st">`</span><span class="dt">Wet_Bulb_Efficiency</span><span class="st">`</span> <span class="op">~</span><span class="st"> `</span><span class="dt">Year_Month</span><span class="st">`</span>, sdata, mean)
+  
+  date_xaxis =<span class="st"> </span><span class="kw">character</span>()
+  
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>imax){
+    year_axis =<span class="st"> </span><span class="kw">substr</span>(<span class="kw">as.character</span>(Wet_Bulb_Mean<span class="op">$</span>Year_Month[i]),<span class="dv">1</span>,<span class="dv">4</span>)
+    month_axis =<span class="st"> </span><span class="kw">substr</span>(<span class="kw">as.character</span>(Wet_Bulb_Mean<span class="op">$</span>Year_Month[i]),<span class="dv">5</span>,<span class="dv">6</span>)
+    date_axis =<span class="st"> </span><span class="kw">paste</span>(year_axis,<span class="st">&quot;01&quot;</span>, <span class="dt">sep =</span> month_axis)
+    date_axis =<span class="st"> </span><span class="kw">as.Date</span>(date_axis,<span class="dt">format =</span> <span class="st">&quot;%Y%m%d&quot;</span>)
+    date_xaxis =<span class="st"> </span><span class="kw">c</span>(date_xaxis,<span class="kw">format</span>(date_axis, <span class="st">&quot;%b %y&quot;</span>))
+  }
+  
+  c_wb =<span class="st"> </span><span class="kw">max</span>(Wet_Bulb_Median<span class="op">$</span>Wet_Bulb_Efficiency)<span class="op">+</span><span class="dv">20</span>
+  f_wb =<span class="st"> </span><span class="kw">min</span>(Wet_Bulb_Median<span class="op">$</span>Wet_Bulb_Efficiency)<span class="op">-</span><span class="dv">20</span>
+  
+  p55=<span class="kw">ggplot</span>(sdata, <span class="kw">aes</span>(<span class="dt">x=</span>Year_Month, <span class="dt">y =</span> Wet_Bulb_Efficiency)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">col =</span> <span class="st">&quot;royalblue3&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> Wet_Bulb_Median, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(<span class="st">`</span><span class="dt">Wet_Bulb_Efficiency</span><span class="st">`</span>,<span class="dv">1</span>), <span class="dt">x =</span> <span class="st">`</span><span class="dt">Year_Month</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">Wet_Bulb_Efficiency</span><span class="st">`</span> <span class="op">+</span><span class="st"> </span><span class="fl">1.6</span>),
+              <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Performance Efficiency&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Efficiency [%]&quot;</span>)
+  p55 =<span class="st"> </span>p55 <span class="op">+</span><span class="st"> </span><span class="kw">geom_path</span>(<span class="dt">data =</span> Wet_Bulb_Mean, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">`</span><span class="dt">Year_Month</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">Wet_Bulb_Efficiency</span><span class="st">`</span>), <span class="dt">group =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="fl">1.2</span>)
+  g55 =<span class="st"> </span>p55<span class="op">+</span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">18</span>), <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>),<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(f_wb,c_wb) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels=</span>date_xaxis,<span class="dt">limits =</span> Wet_Bulb_Median<span class="op">$</span>Year_Month)</code></pre></div>
+<p><br></p>
+<p>Boxplots (or Box and Whiskers Plot) are powerful graphs that tell users <strong>at a glance</strong> what the spread of the data observed. For data like temperature, this is a very useful representation because the data is full of <em>random errors (statistical noise) and outliers</em>.</p>
+<p>Unlike the earlier plot in Section 3, the boxplots are distributed according to month, hence each box corresponds to the entire month’s worth of data (as opposed to being daily).</p>
+<p>Let’s take a look at the graph which is available for wet bulb, ambient and outlet temperatures to give us an idea of how <em>widely</em> distributed the temperature data is.</p>
+<div id="section-2" class="section level4 tabset">
+<h4></h4>
+<div id="wet-bulb-performance" class="section level5">
+<h5>Wet Bulb Performance</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-16-1.png" width="1056" />
+</center>
+</div>
+<div id="ambient-temperature-1" class="section level5">
+<h5>Ambient Temperature</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-17-1.png" width="1056" />
+</center>
+</div>
+<div id="output-temperature-1" class="section level5">
+<h5>Output Temperature</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-18-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-3" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 5.1 - Temperature Boxplots</strong>
+</center>
+<p><br></p>
+<p>What are we looking at? Breaking it down:</p>
+<ul>
+<li><strong><span style="color:blue">Box</span></strong> - Represents data between the <strong>25th and 75th percentile</strong> (i.e. the middle 50% of the data lies between the box). This tells us how <em>evenly spread</em> the data is.</li>
+<li><strong><span style="color:blue">Middle Line</span></strong> - Represents the <a href="https://www.diffen.com/difference/Mean_vs_Median">median</a> of the data at that hour. Is far more useful for skewed or outlier-heavy data sets.</li>
+<li><strong><span style="color:blue">Vertical Lines</span></strong> - Represents the <strong>1st and 99th percentile</strong> point of the data. This tell us how <em>widely spread</em> the data is.</li>
+<li><strong><span style="color:blue">Dots</span></strong> - Represents outliers in the data (i.e. &lt;1st Percentile, &gt; 99th Percentile). This data is normally ignored from calculations.</li>
+<li><strong><span style="color:blue">Straight Line</span></strong> - Same as earlier, represents a best fit line connecting the <strong>mean</strong> of the data.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="water-consumption" class="section level1">
+<h1>6. Water Consumption</h1>
+<p>The unit has no direct way of telling us what the water consumption is, hence we deduce this indirectly by observing the <em>rate</em> of the inlet valve opening and closing. If we peek at the code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">topup =<span class="st"> </span><span class="dv">0</span>
+  water_list =<span class="st"> </span><span class="kw">data.frame</span>()
+  from =<span class="st"> </span><span class="dv">2</span>
+  
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>imax){
+    a2 =<span class="st"> </span>waterdata[[i]]
+    d1 =<span class="st"> </span><span class="kw">length</span>(<span class="kw">table</span>(a2<span class="op">$</span>Day))
+    a3 =<span class="st"> </span><span class="kw">split</span>(a2, a2<span class="op">$</span>Day)
+    
+    <span class="cf">for</span> (ii <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>d1){
+      count =<span class="st"> </span><span class="kw">nrow</span>(a3[[ii]])<span class="op">-</span><span class="dv">1</span>
+      <span class="cf">if</span>(count<span class="op">&lt;</span><span class="dv">2</span>){
+        ii =<span class="st"> </span>ii <span class="co">#check for minimum number of data points being 3</span>
+      }<span class="cf">else</span>{
+        a4 =<span class="st"> </span>a3[[ii]]
+        <span class="cf">for</span> (iii <span class="cf">in</span> from<span class="op">:</span>count){
+          <span class="cf">if</span>(a4<span class="op">$</span>Inlet_Valve[iii<span class="op">-</span><span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>a4<span class="op">$</span>Inlet_Valve[iii] <span class="op">&amp;</span><span class="st"> </span>a4<span class="op">$</span>Inlet_Valve[iii] <span class="op">&gt;=</span><span class="st"> </span>a4<span class="op">$</span>Inlet_Valve[iii<span class="op">+</span><span class="dv">1</span>]){
+            topup =<span class="st"> </span>topup <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+          }<span class="cf">else</span> {
+            topup =<span class="st"> </span>topup
+          }
+        }
+        d =<span class="st"> </span>(a4<span class="op">$</span>Date[<span class="dv">1</span>])
+        m =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(a4<span class="op">$</span>Month[<span class="dv">1</span>]))
+           <span class="cf">if</span> (topup <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){
+            topup_vol =<span class="st"> </span><span class="dv">0</span>
+           }<span class="cf">else</span>{
+           topup_vol =<span class="st"> </span>topup<span class="op">*</span><span class="dv">22</span><span class="op">+</span><span class="dv">43</span> <span class="co">#base amount of water is 65 - 22 litres</span>
+        }
+        water_list1 =<span class="st"> </span><span class="kw">cbind</span>(m,<span class="kw">as.character</span>(d),topup_vol)
+        water_list =<span class="st"> </span><span class="kw">rbind</span>(water_list,water_list1)
+        topup =<span class="st"> </span><span class="dv">0</span>
+      }
+      }
+  }</code></pre></div>
+<center>
+<strong>Fig 6.1 - Water Consumption Code</strong>
+</center>
+<p><br></p>
+<p>Things look very complicated! Let’s qualitatively describe what’s going on here. We start by looking at how the raw data looks like:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Month
+</th>
+<th style="text-align:right;">
+Day
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:right;">
+Inlet_Valve
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+86
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2018-03-01
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 6.2 - Water Consumption Raw Data</strong>
+</center>
+<p><br></p>
+<p>When the <code>inlet_valve = 0</code>, this means that the valve is closed, while when <code>inlet_valve = 1</code>, it means the valve is open. The airbitat unit records down whether the inlet valve is open every minute, hence we use this information to make the following two assumptions:</p>
+<blockquote>
+<p>Every time the valve opens, the unit tops up 22 litres, and the first top up of the unit is 65 litres.</p>
+</blockquote>
+<p>Hence the code goes through the entire day, counting for every instance that the valve <strong>opens and closes</strong> once, and counts that as one top up of 22 litres, with a baseline operation of 65 litres. If the unit does not open at all throughout the day, the code counts that as a 0 litre day.</p>
+<p>Thereafter, we need to divide the amount of water consumed by the number of operating units with the following code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">colnames</span>(water_list) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;Date&quot;</span>, <span class="st">&quot;Daily_Top_Up&quot;</span>)
+  water_list<span class="op">$</span>Daily_Top_Up =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(water_list<span class="op">$</span>Daily_Top_Up))
+  water_list<span class="op">$</span>Daily_Top_Up =<span class="st"> </span>(water_list<span class="op">$</span>Daily_Top_Up)<span class="op">/</span>n
+  water_list<span class="op">$</span>Date =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(water_list<span class="op">$</span>Date, <span class="st">&quot;%Y%m%d&quot;</span>))
+  water_mean =<span class="st"> </span><span class="kw">aggregate</span>(Daily_Top_Up <span class="op">~</span><span class="st"> </span>Month, water_list,mean)
+  water_mean<span class="op">$</span>Daily_Top_Up =<span class="st"> </span><span class="kw">round</span>(water_mean<span class="op">$</span>Daily_Top_Up, <span class="dt">digits =</span> <span class="dv">0</span>)</code></pre></div>
+<center>
+<strong>Fig 6.3 - Water Consumption Average</strong>
+</center>
+<p><br></p>
+<p>The results look like this:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Month
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:right;">
+Daily_Top_Up
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2018-03-05
+</td>
+<td style="text-align:right;">
+230.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2018-03-06
+</td>
+<td style="text-align:right;">
+274.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2018-03-07
+</td>
+<td style="text-align:right;">
+164.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2018-03-08
+</td>
+<td style="text-align:right;">
+208.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2018-03-09
+</td>
+<td style="text-align:right;">
+285.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2018-03-10
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 6.4 - Water Consumption Results</strong>
+</center>
+<p><br></p>
+<p>We now know the <strong>daily average</strong> water consumption of all the units at Cloud9. The subsequent graph looks like this:</p>
+<br>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-23-1.png" width="1056" /> <strong>Fig 6.5 - Water Consumption Graph</strong>
+</center>
+<p><br></p>
+<hr />
+</div>
+<div id="combined-data-plots" class="section level1">
+<h1>7. Combined Data Plots</h1>
+<p>Finally, we also have combined graphs to represent relevant information together. For example, for all the temperature related things:</p>
+<br>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-24-1.png" width="1056" /> <strong>Fig 7.1 - Combined Temperature Plot</strong>
+</center>
+<p><br></p>
+<p>At a glance, we can immediately tell that the <em>outlet temperature</em> follows very closely with the <em>tank temperature</em>, since the water is the last thing to cool the air before it leaves the unit.</p>
+<p>The final combined data looks at the <em>humidity groups</em> and <em>wet bulb efficiency</em> of the units on a month by month basis. It’s easier to illustrate this with the code and graph:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>imax){
+    year_bar =<span class="st"> </span><span class="kw">substr</span>(hdata[[i]][<span class="dv">1</span>,<span class="dv">1</span>],<span class="dv">1</span>,<span class="dv">4</span>)
+    month_bar =<span class="st"> </span><span class="kw">substr</span>(hdata[[i]][<span class="dv">1</span>,<span class="dv">1</span>],<span class="dv">5</span>,<span class="dv">6</span>)
+    date_bar =<span class="st"> </span><span class="kw">paste</span>(year_bar,<span class="st">&quot;01&quot;</span>, <span class="dt">sep =</span> month_bar)
+    date_bar =<span class="st"> </span><span class="kw">as.Date</span>(date_bar,<span class="dt">format =</span> <span class="st">&quot;%Y%m%d&quot;</span>)
+    date_title =<span class="st"> </span><span class="kw">format</span>(date_bar, <span class="st">&quot;%b %Y&quot;</span>)
+    
+    <span class="co">#humidity groups per month</span>
+    table_bar =<span class="st"> </span><span class="kw">table</span>(hdata[[i]][,<span class="dv">3</span>])
+    lab_bar =<span class="st"> </span><span class="kw">names</span>(table_bar)
+    value_bar =<span class="st"> </span><span class="kw">as.vector</span>(table_bar);
+    per_bar =<span class="st"> </span><span class="kw">round</span>(value_bar<span class="op">/</span><span class="kw">sum</span>(value_bar)<span class="op">*</span><span class="dv">100</span>)
+    new_table =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Humidity_Group&quot;</span> =<span class="st"> </span>lab_bar,
+                           <span class="st">&quot;Humidity_Points&quot;</span> =<span class="st"> </span>value_bar,
+                           <span class="st">&quot;Percentage_Points&quot;</span> =<span class="st"> </span>per_bar)
+    graph_bar =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> new_table, <span class="kw">aes</span>(<span class="dt">x=</span>Humidity_Group, <span class="dt">y=</span>Percentage_Points)) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">geom_col</span>(<span class="dt">fill =</span> colour_spec) <span class="op">+</span><span class="st"> </span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">x =</span> date_title, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">paste</span>(Percentage_Points,<span class="st">&quot;%&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>), <span class="dt">y =</span> Percentage_Points <span class="op">+</span><span class="dv">5</span>), <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.9</span>),
+                <span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Humidity_Points, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">105</span>)
+    name =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;bar&quot;</span>,i,<span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+    <span class="kw">assign</span>(name,graph_bar)
+    plist =<span class="st"> </span><span class="kw">append</span>(plist,<span class="kw">as.name</span>(name))
+  }    </code></pre></div>
+<p><br></p>
+<p>The code is extracting the relevant information on a month by month basis, and then plots the boxplots for that month, before stacking these individuals graphs together as one large, centralised graph as follows:</p>
+<div id="section-4" class="section level4 tabset">
+<h4></h4>
+<div id="wet-bulb-efficiencies" class="section level5">
+<h5>Wet Bulb Efficiencies</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-26-1.png" width="1056" />
+</center>
+</div>
+<div id="humidity-groups-1" class="section level5">
+<h5>Humidity Groups</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-27-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-5" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 7.2 - Month by Month Wet Bulb Efficiency Boxplots</strong>
+</center>
+<p><br></p>
+<p>Here, we display the wet bulb efficiency for example. We can see that wet bulb efficiency seems to drop as the humidity of the ambient conditions increase, and in general has little change as the months go by (no performance drops in the life cycle of the unit).</p>
+<hr />
+</div>
+</div>
+<div id="delta-temperature-values" class="section level1">
+<h1>8. Delta Temperature Values</h1>
+<p>This final section is a brief word into the delta T values produced. In an nutshell the four evaluated delta T values are:</p>
+<ol style="list-style-type: decimal">
+<li><strong>(Ambient Temperature - Output Temperature)</strong>: Total cooling from evaporative cooling and heat exchange between cold water and air</li>
+<li><strong>(Tank Temperature - Output Temperature)</strong>: Cooling solely between heat exchanger between cold water and air</li>
+<li><strong>(Tank Temperature - Wet Bulb Temperature)</strong>: How much more the water tank can cool by (i.e. = 0 if water tank is perfectly cooled)</li>
+<li><strong>(Wet Bulb Temperature - Output Temperature)</strong>: How much more the output air can cool by (i.e. = 0 if the air cools perfectly, &lt;0 for &gt;100% wet bulb efficiency)</li>
+</ol>
+<p>In all the later graphs, they are abbreviated as such:</p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ambient Temperature</td>
+<td>Tamb</td>
+</tr>
+<tr class="even">
+<td>Output Temperature</td>
+<td>Tout</td>
+</tr>
+<tr class="odd">
+<td>Tank Temperature</td>
+<td>TTank</td>
+</tr>
+<tr class="even">
+<td>Wet Bulb Temperature</td>
+<td>Twb</td>
+</tr>
+</tbody>
+</table>
+<strong>Fig 8.1 - Parameters and their Abbreviations</strong>
+</center>
+<p><br></p>
+<p>The delta plots togther in one a single graph will look like such:</p>
+<div id="section-6" class="section level4 tabset">
+<h4></h4>
+<div id="combined-delta-temperatures" class="section level5">
+<h5>Combined Delta Temperatures</h5>
+<p><img src="General_Analysis_files/figure-html/unnamed-chunk-28-1.png" width="1056" /></p>
+</div>
+<div id="selected-delta-temperatures" class="section level5">
+<h5>Selected Delta Temperatures</h5>
+<center>
+<img src="General_Analysis_files/figure-html/unnamed-chunk-29-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-7" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 8.2 - Delta Temperatures</strong>
+</center>
+<p><br></p>
+<p>As we can see, the temperature variations tend to be rather small (&lt;2 degrees), however they nonetheless give an idea of how well the unit is performing as explained earlier - especially the TTank - Twb, that provides us the information about how much more the water tank is theoretically able to cool towards.</p>
+<hr />
+</div>
+</div>
+<div id="exporting-data" class="section level1">
+<h1>9. Exporting Data</h1>
+<p>The final section of the code <strong>automatically</strong> exports the all the graphs to the target folder. Do set up the correct target folder so that the code works properly!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/Public/Desktop/Graph Directory/&quot;</span>)
+  
+  <span class="kw">ggsave</span>(<span class="st">&quot;Power Consumption.jpg&quot;</span>, <span class="dt">plot =</span> g1, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Output Temperature.jpg&quot;</span>, <span class="dt">plot =</span> g2, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Output Temperature Boxplot.jpg&quot;</span>, <span class="dt">plot =</span> g22, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Ambient Temperature.jpg&quot;</span>, <span class="dt">plot =</span> g3, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Ambient Temperature Boxplot.jpg&quot;</span>, <span class="dt">plot =</span> g33, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Delta Temperature.jpg&quot;</span>, <span class="dt">plot =</span> g4, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Performance Efficiency.jpg&quot;</span>, <span class="dt">plot =</span> g5 ,<span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Performance Efficiency Boxplot.jpg&quot;</span>, <span class="dt">plot =</span> g55, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Water Consumption.jpg&quot;</span>, <span class="dt">plot =</span> g6, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Air Temperature.jpg&quot;</span>, <span class="dt">plot =</span> g7, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Tank Temperature.jpg&quot;</span>, <span class="dt">plot =</span> g9, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Combined Temperature.jpg&quot;</span>, <span class="dt">plot =</span> g10, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Humidity Group by Month.jpg&quot;</span>, <span class="dt">plot =</span> g11p, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">ggsave</span>(<span class="st">&quot;Wet Bulb Efficiency by Month.jpg&quot;</span>, <span class="dt">plot =</span> g12p, <span class="dt">width =</span> <span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">17</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)
+  <span class="kw">write.csv</span>(Gavg, <span class="dt">file =</span> <span class="st">&quot;Humidity Table.csv&quot;</span>)
+  <span class="kw">View</span>(Gavg) <span class="co">#humidity table</span></code></pre></div>
+<center>
+<strong>Fig 9.1 - Saving Data</strong>
+</center>
+<p><br></p>
+<hr />
+</div>
+<div id="conclusion" class="section level1">
+<h1>10. Conclusion</h1>
+<p>I hope this documentation has been useful in offering a bit of insight of the code, and assist with any troubleshooting. Happy analysing!</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 9 December 2018</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+<meta name="date" content="2018-12-11" />
+
+<title>Other Chemical Analyses</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+<link rel="stylesheet" href="custompurple.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">Other Chemical Analyses</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Other Chemical Analyses</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#foreword"><em>Foreword</em></a></li>
+      <li><a href="#introduction">1. Introduction</a></li>
+      <li><a href="#chemical-treatment-methods">2. Chemical Treatment Methods</a></li>
+      <li><a href="#chlorine-treatment">3. Chlorine Treatment</a><ul>
+      <li><a href="#measuring-chlorine">3.1 - Measuring Chlorine</a></li>
+      <li><a href="#free-chlorine-comparison">3.2 - Free Chlorine Comparison</a></li>
+      <li><a href="#orp-comparison">3.3 - ORP Comparison</a></li>
+      </ul></li>
+      <li><a href="#zinc-anodes">4. Zinc Anodes</a></li>
+      <li><a href="#preliminary-results">5. Preliminary Results</a><ul>
+      <li><a href="#water-test-results">5.1 - Water Test Results</a></li>
+      <li><a href="#smell-tests">5.2 - Smell Tests</a></li>
+      </ul></li>
+      <li><a href="#conclusions">6. Conclusions</a><ul>
+      <li><a href="#test-parameters">6.1 - Test Parameters</a></li>
+      <li><a href="#other-pending-observations">6.2 - Other pending observations</a></li>
+      </ul></li>
+      <li><a href="#appendix">7. Appendix</a><ul>
+      <li><a href="#other-parameters-tested">7.1 - Other Parameters Tested</a></li>
+      </ul></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="foreword" class="section level2">
+<h2><em>Foreword</em></h2>
+<p>The data found in the report can be found in the folder titled <code>Chemical Data</code>, and relevant information is found in .csv and .txt files. Primary data for Marchwood water tests can be found in the file <code>Disinfection Test.xlsx</code>.</p>
+<hr />
+</div>
+<div id="introduction" class="section level1">
+<h1>1. Introduction</h1>
+<p>This documentation is a follow-up to the <a href="https://bozybryan.github.io/innosparks/Ozone_Analysis.html"><strong>Ozone Prototyping Summary</strong></a>, which details the parameters and motivations for pursuing an effective ozone disinfection system for the Airbitat portable. This document is written with the assumption that the previous document has been read, as various references and concepts here will reference the aforementioned document.</p>
+<p>An alternative chemical based treatment is pursued in order to better tackle the following issues:</p>
+<ul>
+<li>The <span style="color:blue">growth of bioactivity</span> in the water tank</li>
+<li>The <span style="color:blue">growth of biofilm</span> in the water tank</li>
+<li>The <span style="color:blue">development of a fishy smell</span> in the evaporative pads</li>
+<li>The subsequent need to perform <span style="color:blue">regular, on site maintenance </span> of Airibtat units</li>
+</ul>
+<hr />
+</div>
+<div id="chemical-treatment-methods" class="section level1">
+<h1>2. Chemical Treatment Methods</h1>
+<p>The following table is a summary of commonly used chemical treatments in water:</p>
+<p><br></p>
+<center>
+<img src="chemicaltreat.png" /> <br> <strong>Fig 2.1 - Chemical Treatments in Water</strong>
+</center>
+<p><br></p>
+<p>Through a method of elimination, most methods in the list are deemed either impractical or too expensive to carry out in the Airbitat - like paraetic acid or hydrogen peroxide, or already tested prior to this period and deemed ineffective - like ozone and ultraviolet light.</p>
+<p>For the period of <strong>30th October to 28th December</strong>, multiple chemical based treatments were carried out in order to determine the most effective treatment method. In particular, treatments involving <a href="https://www.sigmaaldrich.com/catalog/product/aldrich/176125?lang=en&amp;region=US">trichloroisocyanurate</a> and zinc anodes were most promsising with positive results on water disinfection treatments, and will be better elaborated in this report. Other solutions explored will be briefly discussed and covered in the Appendix.</p>
+<hr />
+</div>
+<div id="chlorine-treatment" class="section level1">
+<h1>3. Chlorine Treatment</h1>
+<p>Chlorine is a highly disinfective chemical, akin to ozone in its highly oxidising nature. Chlorine normally dissociates in water to form hypochlorite ions via an equilibrium reaction with water. This hypochlorite ion provides disinfective properties in the aqeuous form, reacting with and killing bacteria. In this process, the pH of the water also rises.</p>
+<p>There are multiple ways of introducing chlorine into a system - as a gas directly, liquid or solid. A summarised and thorough overview of various chlorination methods can be found <a href="https://www.safewater.org/fact-sheets-1/2017/1/23/what-is-chlorination">here</a>. A table of the various solid-based chlorination methods are as such:</p>
+<center>
+<img src="chlorinetreat.png" /> <br> <strong>Fig 3.1 - Summary of Chlorine Treatment in Water <a href="https://www.health.nsw.gov.au/environment/Publications/swimming-pool-and-spa-advisory-doc.pdf">(Source)</a></strong>
+</center>
+<p><br></p>
+<p>While gaseous and liquid chlorination is possible, solid-based chlorination was explored further, owing to the convenience and ease of administering the disinfection treatment. Two of the solid-based treatments were then explored, namely <strong>hypochlorite</strong> (hypo) and <strong>trichloroisocyanurate</strong> (or trichlor).</p>
+<p>Unlike the previous analysis with ozone involving long term continuous testing, all chlorine treatments are done once at the start of the week, and ORP as well as free chlorine is evaluated during the one hour period after chlorine is added. This is known as a <strong>shock treatment</strong> as chlorine is only added once every week, and not administered every hour like ozone (which is conversely known as a <em>continuous treatment</em>).</p>
+<div id="measuring-chlorine" class="section level2">
+<h2>3.1 - Measuring Chlorine</h2>
+<p>Chlorine can be measured directly or indirectly. This section will better explain how these two methods when used together can complement one another in determining disinfection efficacy.</p>
+<div id="direct-chlorine-measurement" class="section level3">
+<h3>3.1.1 - Direct Chlorine Measurement</h3>
+<p>Chlorine in water is normally defined as:</p>
+<blockquote>
+<p>Total Chlorine (TC) = Combined Chlorine (CC) + Free Chlorine (FC)</p>
+</blockquote>
+<p>The three different forms of chlorine are better explained:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Total Chlorine</strong> - This is the total amount of chlorine <em>of all forms</em> that is present in the water, basically the total initial amount of chlorine that we added</li>
+<li><strong>Combined Chlorine</strong> - This is the amount of chlorine that has <em>reacted</em> with contaminants or bacteria in the water, and has been <em>consumed</em></li>
+<li><strong>Free Chlorine</strong> - This is whatever chlorine <em>of all forms</em> that is leftover, or the remaining amount of chlorine in the water after disinfection is complete</li>
+</ol>
+<p>With this split, the effectiveness of chlorine treatment is usually measured by <strong>how much free chlorine</strong> there is in the water, as a higher amount of free chlorine would mean that the chlorine has a higher capacity to continue to disinfect whatever remaining bacteria there is in the water. Free chlorine can be measured in the laboratory via a colorimeter: free chlorine in the water turns bright pink in the presence of <a href="http://www.lamotte.com/en/blog/test-factors/72-measuring-chlorine">DPD</a>, and the colour intensity of this reaction is measured to back calculate the concentration of free chlorine in water with Beer-Lambert’s Law.</p>
+<p>In general, water is considered fully disinfected at concentrations of about <strong>&gt;1.5mg/L of free chlorine</strong>, with cooling towers normally operating at a baseline of 0.5mg/L of free chlorine throughout its life cycle to ensure long-term disinfection.</p>
+<p>Aside from achieving disinfection goals, <strong><span style="color:red">discharge limits</span></strong> are particularly important to take note of for chlorine-based treatments. The National Environmental Agency has a full list of watercourse discharge limits found <a href="https://www.nea.gov.sg/our-services/pollution-control/water-quality/allowable-limits-for-trade-effluent-discharge-to-watercourse-or-controlled-watercourse">here</a>. Crucially, chlorine-based items have the following discharge limits:</p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Chemical</th>
+<th>Concentration Limits (mg/L)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Free Chlorine</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>Chloride Ion</td>
+<td>250</td>
+</tr>
+<tr class="odd">
+<td>pH</td>
+<td><em>6-9</em></td>
+</tr>
+<tr class="even">
+<td><a href="https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100C8XW.txt">Trihalomethanes (THMs)</a></td>
+<td>0.08</td>
+</tr>
+<tr class="odd">
+<td><a href="https://nepis.epa.gov/Exe/ZyPDF.cgi?Dockey=P100C8XW.txt">Haloacetic Acids (HAAs)</a></td>
+<td>0.06</td>
+</tr>
+</tbody>
+</table>
+<strong>Fig 3.2 - Discharge limits of chlorine-influenced products</strong>
+</center>
+<p><br></p>
+<p>THMs and HAAs are biproducts formed from the reaction of chlorine in the water with organic substances (which can come from bacteria). While they are normally almost 0, it is important to check the water discharge concentrations of all the above listed key substances when engaging in chlorine based treatments.</p>
+</div>
+<div id="indirect-chlorine-measurement" class="section level3">
+<h3>3.1.2 - Indirect Chlorine Measurement</h3>
+<p>Chlorine can also be measured via oxidation-reduction potential, or ORP like that in ozone. A useful scale of 2-log removal disinfection with ORP is as follows:</p>
+<center>
+<img src="chlorineorp.png" /> <br> <strong>Fig 3.3 - Disinfection Efficacy with ORP scale for various bacteria <a href="http://www.water-research.net/pdf/orpdisinfection.pdf">(Source)</a></strong>
+</center>
+<p><br></p>
+<p>Unlike ozone, chlorine concentration in water does not follow a fixed correlation with ORP, as ORP changes with chlorine concentration <em>as well as</em> pH of the water, hence it is normally very difficult to directly deduce the amount of chlorine in the water from the ORP alone. An in-depth, thorough explanation of this phenomenon can be found <a href="http://www.sbcontrol.com/orppaper.pdf">here</a>.</p>
+<p>Nevertheless, with Fig 3.3 above it is useful to keep in mind that for disinfection purposes, the ORP of the water should be kept at anywhere above <strong>600 mV</strong> for about <strong>5 minutes</strong> to ensure 2-log removal of most bacteria. Again, ORP is directly measured in water with the ORP meter used also in the ozone treatment.</p>
+<p>With comparisons done between the indirect and direct measures of chlorine in water, alongside the results of water-tests for various ions, the three chlorine based treatments are evaluated against one another in the following sections.</p>
+</div>
+</div>
+<div id="free-chlorine-comparison" class="section level2">
+<h2>3.2 - Free Chlorine Comparison</h2>
+<p>In order to determine the required dose to add into the system, a simple estimate of the desired total chlorine was decided. To calculate the amount of total chlorine in the system, an equation like such is used, which explanations below:</p>
+<blockquote>
+<p><span class="math display">\[Cl_2 \,(mg/L) \rightarrow Mass \,of\, Product \times Available\, Chlorine (\%) \div 65\, litres\]</span></p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><strong>Mass of Product</strong>: Mass of raw solid chlorine-based product added</li>
+<li><strong>Available Chlorine</strong>: Determined from Figure 3.1 above, which describes the amount <strong>by weight</strong> of total chlorine available from the original chlorine product’s mass</li>
+<li><strong>65 litres</strong>: The average amount of water in the Airbitat water tank at any point of time</li>
+</ol>
+<p>Hence for an available chlorine of 65% and 90% for hypochlorite and trichloroisocyanurate respectively, a first basis of comparison was done between 1.5g dose of hypochlorite and 1.2g of trichlor to theoretically give the same amount of total chlorine in the water. For both initial tests, the HRU/MCU fans were turned off as it was theorised that the fans would reduce the amount of free chlorine in the water given the increased rate of chlorine gas lost into the surrounding air with the fans on.</p>
+<p>Thereafter, different trichlor masses of 0.9g (shown in Appendix) and 1.5g were also explored to offer more points of comparison, as well as the turning on of the fans to test the aforementioned theory. The results of the tests as seen below:</p>
+<br>
+<center>
+<p><img src="Other_Chemical_Analyses_files/figure-html/unnamed-chunk-1-1.png" width="1056" /></p>
+<strong>Fig 3.4 - Free Chlorine Comparison</strong>
+</center>
+<p><br></p>
+<p>The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:tomato">1.2g Trichlor w/o fans</span></strong> with the <strong><span style="color:forestgreen">1.5g Hypo w/o fans</span></strong>, there a slightly <em>higher</em> free chlorine concentration initially for trichlor peaking at around 2.6 mg/L, before falling below hypo at the 20 minute mark.
+<ul>
+<li>From comparing the area under both curves, there seems to be rather equal total amount of free chlorine deposited in the water after the entire 60 minutes.</li>
+<li>However, <strong><span style="color:forestgreen">hypochlorite</span></strong> seems to have less free chlorine in the water at the end of 60 minutes as compared to <strong><span style="color:tomato">trichlor</span></strong></li>
+</ul></li>
+<li>In comparing <strong><span style="color:tomato">1.2g Trichlor w/o fans</span></strong> and <strong><span style="color:lightseagreen">1.2g Trichlor with fans</span></strong>, there is a higher amount of free chlorine when the fans are off throughout the entire period, suggesting turning on the MCU/HRU fans cause free chlorine to <em>escape in the surrounding air</em>.</li>
+<li>Lastly, the increase in dosing from <strong><span style="color:lightseagreen">1.2g Trichlor with fans</span></strong> to the <strong><span style="color:magenta">1.5g Trichlor with fans</span></strong> <em>drastically increases</em> the amount of free chlorine in the water, suggesting that the amount of chlorine needed in the water to react with bacteria has already been met with the 1.2g dose (hence any extra chlorine added just becomes free chlorine).</li>
+</ul>
+<p>A mental note should be given to the <em>discharge limit</em> of free chlorine at <strong>1.0 mg/L</strong>, and it is important to identify as such that each of the set ups have various times taken before the water is safe to discharge. Hence, an advisory of about <strong>&gt;90 minutes</strong> before discharge is highly recommended for all set ups.</p>
+</div>
+<div id="orp-comparison" class="section level2">
+<h2>3.3 - ORP Comparison</h2>
+<p>To accompany the free chlorine results, ORP was also logged down: <br></p>
+<center>
+<img src="Other_Chemical_Analyses_files/figure-html/unnamed-chunk-2-1.png" width="1056" /> <strong>Fig 3.5 - ORP Comparison</strong>
+</center>
+<p><br></p>
+<p>From the ORP results, we can also confirm the following things:</p>
+<ul>
+<li>In comparing the <strong><span style="color:tomato">1.2g Trichlor w/o fans</span></strong> with the <strong><span style="color:forestgreen">1.5g Hypo w/o fans</span></strong>, there is virtually the same rate of increase and decrease of ORP through the first 40 minutes (given the same mass of total chlorine in the water), however hypochlorite seems to fall quicker after the 40 minute mark, which also corresponds to the free chlorine pattern observed earlier.</li>
+<li>In comparing <strong><span style="color:tomato">1.2g Trichlor w/o fans</span></strong> and <strong><span style="color:lightseagreen">1.2g Trichlor with fans</span></strong>, the ORP is much higher for the latter which would seem contradictory to the trend observed in free chlorine noted earlier. This might be due to the higher initial ORP of the <strong><span style="color:lightseagreen">1.2g Trichlor with fans</span></strong> at about <strong>330 mV</strong> as compared to <strong><span style="color:tomato">1.2g Trichlor w/o fans</span></strong> at <strong>270 mV</strong>, showing susceptibility of ORP to starting conditions (other substances in the water causing ORP to be higher than what is expected)</li>
+<li>Lastly, when comparing <strong><span style="color:lightseagreen">1.2g Trichlor with fans</span></strong> to the <strong><span style="color:magenta">1.5g Trichlor with fans</span></strong>, the same anamoly is observed as noted as the latter has a lower ORP value throughout the 80 minutes despite the higher dosing.</li>
+</ul>
+<p>Through both evaluations, the minimum disinfection targets are achieved in all set ups (&gt;1.5 mg/L free chlorine and 600 mV),</p>
+<p>Although hypochlorite and trichlor were noted to be largely equal in efficacy from these tests, trichlor is able to achieve the same disinfection with a smaller mass of 1.2g as compared to 1.5g in hypochlorite given the higher available chlorine. As such, it was concluded that long term chemical dosing would likely involve exclusively trichlor, and additional secondary tests such as water and smell tests were also conducted to further ascertain trichlor’s effectiveness, which will be found in Section 5.</p>
+<hr />
+</div>
+</div>
+<div id="zinc-anodes" class="section level1">
+<h1>4. Zinc Anodes</h1>
+<p>Zinc is commonly used as a sacrificial metal in other industrial applications, as it has a fairly negative <a href="https://en.wikipedia.org/wiki/Standard_electrode_potential_(data_page)">electrode potential</a>, hence allowing it to oxidise into zinc ions in place of other more electropositive/reactive metals like iron and copper when placed in water together.</p>
+<p>The application of zinc for bioactivity control is <strong><span style="color:red">not well understood</span></strong> in current literature, with few papers like one found <a href="https://www.sciencedirect.com/science/article/pii/S2468203917300560">here</a> that describe the potential for zinc as an antimicrobial agent. Nonetheless, because zinc is an essential metal ion in all living cells, an <em>excess</em> of it (as with any other essential metal ion like Hg, Cu, Pb etc.) is understood to be toxic as it inhibits normal cell respiratory function.</p>
+<p>Multiple companies like <a href="http://www.thinkzincanode.com/">Anode Systems</a> have developed easy to use and apply zinc anodes to place in water that have a strong ability to remove odour in water. In the application of the Airbitat system, a zinc “sunflower” as marketed by <em>Anode Systems</em> was attached to a more electropositive metal (copper or iron rod) and placed in the water tank, allowing the zinc metal to slowly release zinc ions in the water over time.</p>
+<p>The zinc sunflower quickly loses its shiny surface as the metal begins to undergo <a href="https://www.nace.org/Pitting-Corrosion/">pitting corrosion</a>. The pitting process is accelerated when:</p>
+<ol style="list-style-type: decimal">
+<li>The surface area of the metal exposed to water is <strong>higher</strong></li>
+<li>Electronegativity difference between the metals connected (difference in Zn to Fe &lt; difference in Zn to Cu) to one another is <strong>greater</strong></li>
+</ol>
+<p>Below are two comparison photos of the zinc sunflower attached to an iron rod, with a 4 week difference between them:</p>
+<center>
+<img src="Week2.jpg" /> <br> <strong>Fig 4.1 - Zinc “Sunflower” Week 2</strong>
+</center>
+<p><br></p>
+<p>Note the amount of green algae developing on the walls:</p>
+<center>
+<img src="Week6.jpg" /> <br> <strong>Fig 4.2 - Zinc “Sunflower” Week 6</strong>
+</center>
+<p><br></p>
+<p>After just about four weeks the algae becomes much thicker and concentrated on the walls, suggesting that zinc is unable to control the outbreak of bioactivity in the water. Nonetheless, alongside the chlorine treatment, zinc anodes were further evaluated in efficacy by conducting water tests and smell tests, which will be elaborated in the next section.</p>
+<hr />
+</div>
+<div id="preliminary-results" class="section level1">
+<h1>5. Preliminary Results</h1>
+<p>To conduct long term testing of the units, three units were utilised to run variations of the two parameters to test efficacy in removing bioactivity and smell:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Unit 85</strong> - Zinc Stick for two weeks (7th - 19th Nov), Zinc Sunflower running 3 weeks as of 11th December</li>
+<li><strong>Unit 88</strong> - Zinc Sunflower (30th Oct onwards), running 6 weeks as of 11th December</li>
+<li><strong>Unit SS</strong> - Trichlor only, ran 0.9g and thereafter 1.5g doses weekly</li>
+</ol>
+<p>As such currently as of 11th Dec, there are two zinc sunflower units and one plain trichloroisocynurate unit.</p>
+<div id="water-test-results" class="section level2">
+<h2>5.1 - Water Test Results</h2>
+<p>This time, a slightly different set of parameters were tested for the water tests and are described as below:</p>
+<ul>
+<li><strong>Standard Plate Count (SPC)</strong> - Measures the amount of bioactivity potentially in the water; more information <a href="https://www.fda.gov/food/foodscienceresearch/laboratorymethods/ucm063346.htm">here</a></li>
+<li><strong>Legionella</strong> - Most hazardous bacteria relevent to evaporative coolers</li>
+<li><strong>Pseudomonas Aeruginosa</strong> - Strain of bacteria usually associated with biofilm formation. More information can be found <a href="https://www.ncbi.nlm.nih.gov/pubmed/25866808">here</a></li>
+<li><strong>Sulfure Reducing Bacteria (SRB)</strong> - Describes a general family of bacteria that undergo respiration with sulfate ions, producing pungent hydrogen sulfide in the process. More information can be found <a href="http://www.oilfield-biocides.com/oilfield-biocides/microorganisms/SRB.php">here</a>.</li>
+<li><strong>Zinc</strong> - Amount of zinc metal present in the water, gives an idea of how much zinc is being released into the water from the anodes</li>
+</ul>
+<p>The results of the three different trichlor shock doses are reproduced below, with the before and after dosing (1 hour later) values placed side by side, as well as the values for the zinc unit:</p>
+<p><br></p>
+<center>
+<table class="table table-bordered" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Trichloroisocyanurate Dose
+</div>
+</th>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+0.9g without fans
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+1.5g without fans
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+1.5g with fans
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Zinc
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Inlet
+</th>
+<th style="text-align:center;">
+Before
+</th>
+<th style="text-align:center;">
+After
+</th>
+<th style="text-align:center;">
+Before
+</th>
+<th style="text-align:center;">
+After
+</th>
+<th style="text-align:center;">
+Before
+</th>
+<th style="text-align:center;">
+After
+</th>
+<th style="text-align:center;">
+Week 1
+</th>
+<th style="text-align:center;">
+Week 2
+</th>
+<th style="text-align:center;">
+Week 3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: snow;">
+SPC
+</td>
+<td style="text-align:center;background-color: antiquewhite;border-left:2px solid gray;border-right:2px solid gray;">
+290
+</td>
+<td style="text-align:center;background-color: lightsalmon;">
+1800
+</td>
+<td style="text-align:center;background-color: lightsalmon;">
+250
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-left:2px solid gray;">
+4300
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-right:2px solid gray;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightgreen;">
+7400
+</td>
+<td style="text-align:center;background-color: lightgreen;border-right:2px solid gray;">
+60
+</td>
+<td style="text-align:center;background-color: violet;">
+33000
+</td>
+<td style="text-align:center;background-color: violet;">
+2200
+</td>
+<td style="text-align:center;background-color: violet;">
+26000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: azure;font-weight: bold;background-color: snow;">
+Legionella
+</td>
+<td style="text-align:center;background-color: antiquewhite;border-left:2px solid gray;border-right:2px solid gray;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightsalmon;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightsalmon;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-left:2px solid gray;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-right:2px solid gray;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightgreen;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightgreen;border-right:2px solid gray;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: violet;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: violet;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: violet;background-color: azure;">
+&lt;1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: snow;">
+P.Aeruginosa
+</td>
+<td style="text-align:center;background-color: antiquewhite;border-left:2px solid gray;border-right:2px solid gray;">
+1200
+</td>
+<td style="text-align:center;background-color: lightsalmon;">
+NA
+</td>
+<td style="text-align:center;background-color: lightsalmon;">
+NA
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-left:2px solid gray;">
+NA
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-right:2px solid gray;">
+NA
+</td>
+<td style="text-align:center;background-color: lightgreen;">
+2300
+</td>
+<td style="text-align:center;background-color: lightgreen;border-right:2px solid gray;">
+4
+</td>
+<td style="text-align:center;background-color: violet;">
+1400
+</td>
+<td style="text-align:center;background-color: violet;">
+26000
+</td>
+<td style="text-align:center;background-color: violet;">
+33000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: azure;font-weight: bold;background-color: snow;">
+SRB
+</td>
+<td style="text-align:center;background-color: antiquewhite;border-left:2px solid gray;border-right:2px solid gray;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: lightsalmon;background-color: azure;">
+NA
+</td>
+<td style="text-align:center;background-color: lightsalmon;background-color: azure;">
+NA
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-left:2px solid gray;background-color: azure;">
+NA
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-right:2px solid gray;background-color: azure;">
+NA
+</td>
+<td style="text-align:center;background-color: lightgreen;background-color: azure;">
+325
+</td>
+<td style="text-align:center;background-color: lightgreen;border-right:2px solid gray;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: violet;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: violet;background-color: azure;">
+&lt;1
+</td>
+<td style="text-align:center;background-color: violet;background-color: azure;">
+&lt;1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: snow;">
+Zinc
+</td>
+<td style="text-align:center;background-color: antiquewhite;border-left:2px solid gray;border-right:2px solid gray;">
+0.59
+</td>
+<td style="text-align:center;background-color: lightsalmon;">
+NA
+</td>
+<td style="text-align:center;background-color: lightsalmon;">
+NA
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-left:2px solid gray;">
+0.033
+</td>
+<td style="text-align:center;background-color: lightskyblue;border-right:2px solid gray;">
+NA
+</td>
+<td style="text-align:center;background-color: lightgreen;">
+NA
+</td>
+<td style="text-align:center;background-color: lightgreen;border-right:2px solid gray;">
+NA
+</td>
+<td style="text-align:center;background-color: violet;">
+0.37
+</td>
+<td style="text-align:center;background-color: violet;">
+0.48
+</td>
+<td style="text-align:center;background-color: violet;">
+0.36
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<span style="font-style: italic;">Footnote: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup></sup> NA means that the parameter was not tested.
+</td>
+</tr>
+</tfoot>
+</table>
+<strong>Fig 5.1a - Water Test Results</strong>
+</center>
+<p><br></p>
+<p>Some preliminary conclusions can be drawn:</p>
+<ul>
+<li><strong>Trichloroisocyanurate</strong>
+<ul>
+<li>In comparing the <strong><span style="color:tomato">0.9g Dose</span></strong> and the <strong><span style="color:royalblue">1.5g Dose</span></strong> for both without fans, there is a significantly higher <em>percentage</em> decrease (&gt;99.9% compared to 87.5%) of <strong>SPC</strong> for the latter option, indicating that the <strong><span style="color:royalblue">1.5g Dose</span></strong> has a higher efficacy in reducing bioactivity</li>
+<li>In comparing the <strong><span style="color:royalblue">1.5g Dose without fans</span></strong> and the <strong><span style="color:limegreen">1.5g Dose with fans</span></strong>, there is almost a similar <em>percentage</em> decrease in <strong>SPC</strong>, implying that disinfection is unaffected by whether the MCU/HRU fans are on or off</li>
+<li><strong>All doses</strong> are able to bring all bioactivity down to equal or lower than the <strong><span style="color:tan">Inlet</span></strong> conditions</li>
+</ul></li>
+<li><strong>Zinc</strong>
+<ul>
+<li>There is generally an increase across the weeks for all bioactivity when comparing within the <strong><span style="color:purple">zinc units</span></strong>, and they are all higher than the trichlor units, <strong>except for Legionella and SRBs</strong>.</li>
+<li>Additionally, while there is less <strong>zinc</strong> in the water as compared to the <strong><span style="color:tan">Inlet</span></strong>, the amount is much higher than the zinc in an ordinary trichlor unit like the <strong><span style="color:royalblue">1.5g Dose</span></strong>, implying that zinc is only able to accumulate in the zinc unit.</li>
+</ul></li>
+</ul>
+<p>Because there are additional conclusions to be drawn, let’s split them into two tabs - namely the 1.5g trichloroisocynaurate unit and zinc unit:</p>
+<div id="section" class="section level4 tabset">
+<h4></h4>
+<div id="trichloroisocyanurate-unit" class="section level5">
+<h5><strong>Trichloroisocyanurate Unit</strong></h5>
+<center>
+<img src="Other_Chemical_Analyses_files/figure-html/unnamed-chunk-4-1.png" width="768" />
+</center>
+<p><br> There is a clear disinfection efficacy observed in the 1.5g Trichlor unit with fans, where all parameters have reduced by <strong>over 99.9%</strong>, or 3-log removal.</p>
+</div>
+<div id="zinc-unit" class="section level5">
+<h5><strong>Zinc Unit</strong></h5>
+<center>
+<img src="Other_Chemical_Analyses_files/figure-html/unnamed-chunk-5-1.png" width="768" />
+</center>
+<p><br> All parameters have largely across the board <strong>increased</strong> when comparing against the <strong><span style="color:tomato">Baseline unit (1.5g Triclor with fans)</span></strong>, except the <strong>SRBs</strong>, which show a massive decrease, whilst bioactivity like <strong>SPC and P.Aeruginosa</strong> seem to be increasing as the weeks proceed, and <strong>Zinc</strong> seems to stay consistently around 0.40.</p>
+</div>
+</div>
+<div id="section-1" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 5.1b - Further Graphical Considerations</strong>
+</center>
+<p><br></p>
+<p>In terms of the water testing alone, we can generally conclude that the <em>trichlor</em> is <strong>effective</strong> in disinfecting the water tank after shock treatment (achieving a 3-log removal for the 1.5g dose), while the <em>zinc unit</em> only seems to <strong>help keep Legionella and SRBs low</strong> while allowing the rest of the bioactivity to accumulate in the unit.</p>
+</div>
+</div>
+<div id="smell-tests" class="section level2">
+<h2>5.2 - Smell Tests</h2>
+<p>A quick recap of how to check for the smell of the evaporative pads are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>The pump has to be <strong>turned off</strong>, so that there is no fresh water running through the evaporative pads to mask the smell</li>
+<li>The fans have to be <strong>turned on</strong> so that the pads are drying out</li>
+<li>The smell will be strongest when the pads are in a <em>semi-dry</em> state, which usually takes around 20-30 minutes after the pumps are turned off</li>
+</ol>
+<p>The smell of the pads before and after trichlor shock treatment and zinc units were qualitatively noted down:</p>
+<br>
+<center>
+<table class="table table-bordered" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Time Period
+</th>
+<th style="text-align:center;">
+Smell
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightsalmon;background-color: azure;">
+0.9g without fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightsalmon;">
+Before
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightsalmon;">
+Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightsalmon;background-color: azure;">
+0.9g without fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightsalmon;">
+After
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightsalmon;">
+Mild Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightskyblue;background-color: azure;">
+1.5g without fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightskyblue;">
+Before
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightskyblue;">
+Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightskyblue;background-color: azure;">
+1.5g without fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightskyblue;">
+After
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightskyblue;">
+Undetected
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightgreen;background-color: azure;">
+1.5g with fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightgreen;">
+Before
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightgreen;">
+Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightgreen;background-color: azure;">
+1.5g with fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightgreen;">
+After
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightgreen;">
+Undetected
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: lightgreen;background-color: azure;">
+1.5g with fans
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightgreen;">
+1 Week Later
+</td>
+<td style="text-align:center;font-weight: bold;background-color: lightgreen;">
+Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: violet;background-color: azure;">
+Zinc Unit
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+1 Week
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+Undetected
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: violet;background-color: azure;">
+Zinc Unit
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+2 Weeks
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+Undetected
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: violet;background-color: azure;">
+Zinc Unit
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+3 Weeks
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+Mild Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: violet;background-color: azure;">
+Zinc Unit
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+4 Weeks
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+Foul Smell
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;background-color: violet;background-color: azure;">
+Zinc Unit
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+5 Weeks
+</td>
+<td style="text-align:center;font-weight: bold;background-color: violet;">
+Foul Smell
+</td>
+</tr>
+</tbody>
+</table>
+<strong>Fig 5.2 - Evaporative Media Smell</strong>
+</center>
+<p><br></p>
+<ul>
+<li><strong>Trichloroisocyanurate</strong> <br>
+<ul>
+<li>As expected, the <strong><span style="color:royalblue">1.5g Dose</span></strong> seems to be more effective in removing the smell from the pads as compared to the <strong><span style="color:tomato">0.9g Dose</span></strong> immediately 1 hour after shock treatment was performed. However, the smell problem does not permanently go away, as it returns just <strong>1 week later</strong> as seen in the <strong><span style="color:limegreen">1.5g Dose with fans</span></strong>.</li>
+</ul></li>
+<li><strong>Zinc</strong> <br>
+<ul>
+<li>As observed, the <strong><span style="color:violet">Zinc Unit</span></strong> exhibits no foul smell even after 2 weeks, and only has the same characteristic fishy smell after 4 weeks. As compared to any of the trichloroisocyanurate-based units, the zinc unit seems to be better in preventing the development of foul smells.</li>
+</ul></li>
+</ul>
+<p>Although the <em>trichlor</em> shock treatment seems to quantitatively solve the bioactivity issues in the water tank, it is an <strong>ineffective</strong> long-lasting solution. Conversely, the <em>zinc unit</em> seems to be <strong>effective</strong> in suppressing the the foul smell coming from the evaporative pads for up to 3 to 4 weeks.</p>
+<hr />
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>6. Conclusions</h1>
+<p>Through this chemical test so far, there are multiple aspects to observe and follow up upon.</p>
+<div id="test-parameters" class="section level2">
+<h2>6.1 - Test Parameters</h2>
+<p>From the test parameters measured in the water and smell tests, we can draw a brief conclusion about the level of bioactivity and smell of the evaporative pads, with selected data extracted below to allow comparison to be easily observed:</p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Unit</th>
+<th>Time</th>
+<th>SPC</th>
+<th>SRB</th>
+<th>Smell</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><span style="color:limegreen">1.5g Dose with fans</span></strong></td>
+<td>Week 1</td>
+<td>7400</td>
+<td>325</td>
+<td>Foul Smell</td>
+</tr>
+<tr class="even">
+<td><strong><span style="color:violet">Zinc Unit</span></strong></td>
+<td>Week 1</td>
+<td>33000</td>
+<td>&lt;1</td>
+<td>No Smell</td>
+</tr>
+<tr class="odd">
+<td><strong><span style="color:violet">Zinc Unit</span></strong></td>
+<td>Week 2</td>
+<td>2200</td>
+<td>&lt;1</td>
+<td>No Smell</td>
+</tr>
+</tbody>
+</table>
+<strong>Fig 6.1 - Extracted Data from Fig 5.1 and 5.2</strong>
+</center>
+<p><br></p>
+<ol style="list-style-type: decimal">
+<li>While it was previously assumed that smell of the evaporative pads would be correlated with the amount of bioactivity in the water (SPC), it was discovered through the water tests with Zinc that the amount of SPC is <strong>not strongly correlated</strong> with the smell of the unit</li>
+<li>Instead the <strong>amount of SRBs</strong> is better correlated with the smell of the unit</li>
+<li>The amount of Legionella and P. Aerugoinosa does not seem to have any strong influence on the smell of the unit</li>
+</ol>
+<p>However, with the lack of long term results, this conclusion is a <em>weak one</em> and more observations are required to draw a fair conclusion.</p>
+</div>
+<div id="other-pending-observations" class="section level2">
+<h2>6.2 - Other pending observations</h2>
+<p>As this test is still ongoing, some avenues to continue to explore can be broadly classified under chlorine, zinc and other chemical questions.</p>
+<div id="pending-chlorine-questions" class="section level3">
+<h3>6.2.1 - Pending chlorine questions</h3>
+<p>Chlorine is a very oxidising, damaging chemical which dissolves in water to form small amounts of hydrochloric acid, which when examined in the long term, causes many metals to oxidise rapidly if not added in controlled doses. As such, some of the following variables will need to be analysed:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Metal oxidation</strong> - The iron (pump) and copper (heat exchanger) based parts in the Airbitat will need to be examined for long term damage, as chlorine should over time corrode and cause the metal to pit. For example, a paper examining chlorine damage on steel can be found <a href="http://cdn.intechopen.com/pdfs/33625/intech-corrosive_effects_of_chlorides_on_metals.pdf">here</a>.</p></li>
+<li><p><strong>Non-metal corrosion</strong> - Other non-metal parts like rubber and PVC should be normally resistant to chlorine corrosion, however some long term damage or deposition might be observed nonetheless and should be visually inspected.</p></li>
+<li><p><strong>Efficacy in preventing biofilm growth</strong> - While proven effective in lowering the amount of bioactivity, chlorine has not been fully measured in preventing biofilm growth from a clean unit, and hence should be further evaluated in this area for potential efficacy.</p></li>
+</ol>
+</div>
+<div id="pending-zinc-questions" class="section level3">
+<h3>6.2.2 - Pending zinc questions</h3>
+<p>Because zinc is still not well understood in its function, there are more miscellaneous questions to address with the use of zinc:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Compatibility with other metals</strong> - As zinc ions are discharged into the water, it should naturally deposit onto more electropositive metals, hence the iron (pump) and copper (heat exchanger) based parts need to be examined for zinc deposition</p></li>
+<li><p><strong>Zinc Resistance</strong> - Zinc ion efficacy in disinfection will diminish over time (as with any other essential metal ion) as the bacteria begins to develop a <em>resistance mechanism</em> to the metal ion. Resistance mechanisms are never fully understood, but papers such as that found <a href="https://www.researchgate.net/publication/228332042_Zinc_resistance_mechanisms_in_bacteria">here</a> offer a bit of insight to zinc resistence specifically. With regards to the Airbitat, an exact period of time it takes for water-borne bacteria to develop zinc resistance needs to be quantified.</p></li>
+<li><p><strong>Zinc lifespan</strong> - A followup to the previous point, besides ascertaining how long the bacteria takes to develop a sizeable resistance to zinc, we also need to determine how long a zinc anode can last in the water tank before it needs to be replaced.</p></li>
+</ol>
+</div>
+<div id="pending-misc.-questions" class="section level3">
+<h3>6.2.3 - Pending misc. questions</h3>
+<p>There are additional, untested chemicals that have yet to be tested and can be explored should the zinc option become especially expensive:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Copper/Silver Anode</strong> - As useful starting point to investigate would be to explore pool operators that use this technology, such as that found <a href="https://apsp.org/Portals/0/RWQ%20Fact%20Sheets/Copper-Silver%20Ionizers%20-%20July%2029,%202014.pdf">here</a>. While it was initially concluded to be infeasible due to cost, it is included here for documentation.</li>
+</ol>
+<hr />
+</div>
+</div>
+</div>
+<div id="appendix" class="section level1">
+<h1>7. Appendix</h1>
+<div id="other-parameters-tested" class="section level2">
+<h2>7.1 - Other Parameters Tested</h2>
+<p>In this section, three alternative (unsuccessful) chemical tests are detailed and obervations are recorded:</p>
+<div id="dichloroisocyanurate" class="section level3">
+<h3>7.1.1 - Dichloroisocyanurate</h3>
+<p>A solid-based chlorine product, dichlor is principally similar to both hypochlorite and trichloroisocyanurate, releasing total chlorine into the water to perform disinfection. Commercially it is readily available at pharmacies and is known as <strong>troclosene sodium</strong>, or <a href="http://www.aquatabs.com/home/about-aquatabs/">Aquatabs</a>, and is designed to be added to raw water in order to make potable water. Given the small volume required in drinking water, multiple tablets adding up to 1.4g of active agent dichlor (equivalent to 1.2g trichlor) were added to water to test the amount of free chlorine produced as follows:</p>
+<center>
+<img src="dichlor.jpg" /> <br> <strong>Fig 7.1 - Dichloroisocyanurate Pills</strong>
+</center>
+<p><br></p>
+<p>As seen, each individual 1.5g pill only contained about 8.5mg of dichlor and hence multiple pills needed to be administered to add up the active agent. In the end, although the amount of free chlorine tested in water was about the same as an equal mass of trichlor, the simplicity of using trichlor was opted for. This product was never tested in the Airbitat unit.</p>
+</div>
+<div id="calcium-sulfate-dihydrate-silica" class="section level3">
+<h3>7.1.2 - Calcium Sulfate-Dihydrate Silica</h3>
+<p>This block is normally marketed as anti-smell block, and should in theory bind with foul smelling hydrogen sulfide to remove the odour from the evaporative media pads.</p>
+<center>
+<img src="disul.jpg" /> <br> <strong>Fig 7.2 - Calcium Sulfate-Dihydrate Silica Block</strong>
+</center>
+<p><br></p>
+<p>This block was tested from the period of 21st October - 27th October 2018. However after 1 week of leaving it in the Airbitat, the foul smell still developed as per normal, and hence this chemical was deemed to have failed.</p>
+</div>
+<div id="tea-tree-oil" class="section level3">
+<h3>7.1.3 - Tea Tree Oil</h3>
+<p>Finally, this product was claimed to also similarly remove foul smells by <em>masking</em> it with a tea tree odour.</p>
+<center>
+<img src="teatree.jpg" /> <br> <strong>Fig 7.3 - Tea Tree Oil</strong>
+</center>
+<p><br></p>
+<p>The tea tree oil was tested on the 19th November 2018. While the tea tree odour was certainly evident for the period immediately after being administered, it was also unable to remove any foul smell and hence deemed to have failed.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 11 December 2018</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

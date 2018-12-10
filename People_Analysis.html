@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+
+<title>Bus Stop: People Trends</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="customgreen.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">Bus Stop: People Trends</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Bus Stop: People Trends</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#foreword"><em>Foreword</em></a></li>
+      <li><a href="#breaking-down-the-data">1. Breaking down the data</a></li>
+      <li><a href="#reorganising-around-the-shutdown-cycle">2. Reorganising around the shutdown-cycle</a></li>
+      <li><a href="#calculating-average-maximum-time-and-number-of-people">3. Calculating Average, Maximum Time, and Number of People</a></li>
+      <li><a href="#average-number-of-people">4. Average Number of People</a></li>
+      <li><a href="#average-and-maximum-waiting-time">5. Average and Maximum Waiting Time</a></li>
+      <li><a href="#heatmap-of-people">6. Heatmap of People</a></li>
+      <li><a href="#conclusions">7. Conclusions</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="foreword" class="section level2">
+<h2><em>Foreword</em></h2>
+<p>This document is one of two parts (the other being the <a href="https://bozybryan.github.io/innosparks/TemperaturePM_Analysis.html"><strong>Temperature and PM data analysis</strong></a>). The R code referenced in this document is titled <code>bus_stop_people_analysis</code>.</p>
+<hr />
+</div>
+<div id="breaking-down-the-data" class="section level1">
+<h1>1. Breaking down the data</h1>
+<p>For the rest of this document, I’ll be using the data collected from the bus stop camera in September.</p>
+<p>Cracking open the data reveals an entire string of numbers. Let’s first organise them neatly into a compact data frame with the correct headers. In a brief explanation:</p>
+<ul>
+<li><span style="color:blue">DateTime</span> - Date (YYYY-MM-DD) and Time (HR:MIN:SEC)</li>
+<li><span style="color:blue">ID</span> - A unique number issued to each <strong>new</strong> person that enters the bus stop</li>
+<li><span style="color:blue">Waiting Time</span> - The amount of time the unique person has stayed in the bus stop</li>
+<li><span style="color:blue">Total Number</span> - The total number of people in the bus stop at the point of time</li>
+<li><span style="color:blue">Average</span> - The average amount of time spent in the bus stop for any given person</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(fulldata) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;DateTime&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;Waiting Time&quot;</span>, <span class="st">&quot;Total Number&quot;</span>, <span class="st">&quot;Average&quot;</span>)
+t =<span class="st"> </span><span class="dv">20</span> <span class="co">#t is the time buffer (20 seconds)</span>
+
+######################
+
+fulldata =<span class="st"> </span><span class="kw">subset</span>(fulldata, <span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">&gt;</span>t <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">&lt;</span><span class="dv">3600</span>)
+fulldata<span class="op">$</span>Date =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">substr</span>(fulldata<span class="op">$</span>DateTime,<span class="dv">9</span>,<span class="dv">10</span>))
+fulldata<span class="op">$</span>Hour =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">substr</span>(fulldata<span class="op">$</span>DateTime,<span class="dv">12</span>,<span class="dv">13</span>))
+days =<span class="st"> </span><span class="kw">length</span>(<span class="kw">table</span>(fulldata<span class="op">$</span>Date))</code></pre></div>
+<center>
+<strong>Fig 1.1 - Extracting Data</strong>
+</center>
+<p><br></p>
+<p>We define a <em>time buffer</em> <code>t = 20</code>. This basically tells the code to remove all data entries of people that waited less than 20 seconds in the bus stop - as we can assume that these people we just walking through the bus stop and hence would not be waiting for a bus. We also extract out the <strong>date</strong> and <strong>hour</strong> of each entry, which would help us organise the data for presentation later.</p>
+<p>Now if we take a small peek into a section of the data:</p>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+DateTime
+</th>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+Waiting Time
+</th>
+<th style="text-align:right;">
+Total Number
+</th>
+<th style="text-align:right;">
+Average
+</th>
+<th style="text-align:right;">
+Date
+</th>
+<th style="text-align:right;">
+Hour
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-09
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+219
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-09
+</td>
+<td style="text-align:right;">
+25899
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-09
+</td>
+<td style="text-align:right;">
+25903
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-10
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-10
+</td>
+<td style="text-align:right;">
+25899
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-10
+</td>
+<td style="text-align:right;">
+25903
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-11
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-11
+</td>
+<td style="text-align:right;">
+25899
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-11
+</td>
+<td style="text-align:right;">
+25903
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-12
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+222
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 1.2a - Section of Data</strong>
+</center>
+<p><br></p>
+<p>Notice that the data tracks <em>every single unique ID</em> every second. Let’s zoom into unique individual, <strong>25861</strong>:</p>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+DateTime
+</th>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+Waiting Time
+</th>
+<th style="text-align:right;">
+Total Number
+</th>
+<th style="text-align:right;">
+Average
+</th>
+<th style="text-align:right;">
+Date
+</th>
+<th style="text-align:right;">
+Hour
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-09
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+219
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-10
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+220
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-11
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-01 00-00-12
+</td>
+<td style="text-align:right;">
+25861
+</td>
+<td style="text-align:right;">
+222
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 1.2b - Section of Data</strong>
+</center>
+<p><br></p>
+<p>As we can see, the data tracks the individual every second, and produces their total waiting time. Once this individual leaves the bus stop, they are no longer tracked and the ID is no longer used. Every single day, the bus stop resets and the IDs being again, starting from ID number 0, 1, 2 and so on.</p>
+<p>Now that we know how the bus stop tracks the data, let’s get to analysing it!</p>
+<hr />
+</div>
+<div id="reorganising-around-the-shutdown-cycle" class="section level1">
+<h1>2. Reorganising around the shutdown-cycle</h1>
+<p>As the title suggests, we now need to re-arrange the data around the start-shutdown of the bus stop. Every day, the bus stop operates from <strong>0600 - 0100</strong> the next day, which means that the unique IDs generated everyday begin at 0600 and only reset <em>after</em> 0100 the day after. So why is this important?</p>
+<p>Let’s take a look at the code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y =<span class="st"> </span>fulldata[<span class="kw">order</span>(fulldata<span class="op">$</span>ID),] 
+datet =<span class="st"> </span><span class="kw">split</span>(y,y<span class="op">$</span>Date) <span class="co">#split data according to date</span>
+
+imax =<span class="st"> </span><span class="kw">length</span>(<span class="kw">table</span>(y<span class="op">$</span>Date))
+
+newlist =<span class="st"> </span><span class="kw">list</span>()</code></pre></div>
+<center>
+<strong>Fig 2.1a - Splitting and reorganising</strong>
+</center>
+<p><br></p>
+<p>At the start, command <code>split(y,y$Date)</code> is segmenting the entire data set by date, which means that we’ve now separated the original data set into 30 different tables of data, corresponding to the days of the month (i.e. 1st Sept, 2nd Sept etc.).</p>
+<p>However, we’re now faced with the issue highlighted before - a <strong>part</strong> of 2nd Sept (specifically, from 0000 - 0100 hrs) should actually “belong” to the data from 1st Sept (0600 - 2359) to form a complete start-shutdown operation cycle.</p>
+<p>Hence in this section:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Creates a new list that rearranges data around the shutdown cycle</span>
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>imax){
+  ii =<span class="st"> </span>i
+  ii2 =<span class="st"> </span>i<span class="op">-</span><span class="dv">1</span>
+  y1 =<span class="st"> </span>datet[[ii]]
+  y2 =<span class="st"> </span><span class="kw">subset</span>(y1, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)
+  y1 =<span class="st"> </span><span class="kw">subset</span>(y1, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>)
+  y3 =<span class="st"> </span>datet[[ii2]]
+  y1 =<span class="st"> </span><span class="kw">rbind</span>(y3,y2)
+  y1 =<span class="st"> </span>y1[<span class="kw">order</span>(y1<span class="op">$</span>ID,<span class="op">-</span>y1<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>),]
+  y1 =<span class="st"> </span><span class="kw">subset</span>(y1, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span> <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)
+  newlist =<span class="st"> </span><span class="kw">list.append</span>(newlist,y1)
+} <span class="co">#rearranges data to shift 12am and 1am people to the day before</span>
+
+<span class="co">#Add the last day into the list</span>
+ylast =<span class="st"> </span>datet[[imax]]
+ylast =<span class="st"> </span><span class="kw">subset</span>(ylast, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span> <span class="op">&gt;</span><span class="dv">2</span>)
+ylast =<span class="st"> </span>ylast[<span class="kw">order</span>(ylast<span class="op">$</span>ID,<span class="op">-</span>ylast<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>),]
+ylast =<span class="st"> </span><span class="kw">subset</span>(ylast, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span> <span class="op">!=</span><span class="dv">1</span>)
+newlist =<span class="st"> </span><span class="kw">list.append</span>(newlist,ylast)</code></pre></div>
+<center>
+<strong>Fig 2.1b - Splitting and reorganising</strong>
+</center>
+<p><br></p>
+<p>We create a <code>for</code> loop to retrieve data from the second day, and put them back into the original day, repeating this from the first to the last day of the month. This way, when we need to calculate the daily averages of people or waiting time, we are now able to do so accurately based on the daily start-shutdown cycle of the bus stop.</p>
+<p>An extremely crucial step happens here: in the command <code>y1[order(y1$ID,-y1$Waiting Time),]</code>, we basically tell the code to examine every single unique ID, and rearrange the data in <strong><span style="color:red">descending order of waiting time</span></strong>, for each unique ID. This becomes relevant later, so hang on to this thought.</p>
+<p>We’ve now prepared our data set for analysis.</p>
+<hr />
+</div>
+<div id="calculating-average-maximum-time-and-number-of-people" class="section level1">
+<h1>3. Calculating Average, Maximum Time, and Number of People</h1>
+<p>Now we need to find a way to retrieve only the relevant data. Recall earlier that the data set contains unique IDs that display <strong>every second</strong> that the person stays in the bus stop, and only stops once the person leaves.</p>
+<p>Hence, the only relevant data to us is the <strong>final</strong> entry of every unique ID, that is to say we are only concerned with how long a person had to wait just before they left, in order to determine the actual waiting time of all the people at the bus stop.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">days =<span class="st"> </span>imax
+z =<span class="st"> </span><span class="kw">list</span>()
+p =<span class="st"> </span><span class="dv">0</span>
+a3 =<span class="st"> </span><span class="kw">data.frame</span>()
+sumlist =<span class="st"> </span><span class="kw">list</span>()
+tlist =<span class="st"> </span><span class="kw">data.frame</span>()
+maxlist =<span class="st"> </span><span class="kw">data.frame</span>()
+
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>days){
+  a1 =<span class="st"> </span>newlist[[i]]
+  a11 =<span class="st"> </span><span class="kw">distinct</span>(a1, <span class="st">`</span><span class="dt">ID</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span>)
+  a4 =<span class="st"> </span><span class="kw">distinct</span>(a1, <span class="st">`</span><span class="dt">ID</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Hour</span><span class="st">`</span>, <span class="dt">.keep_all =</span> <span class="ot">TRUE</span>)
+  maxt =<span class="st"> </span><span class="kw">aggregate</span>(<span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">~</span>Hour,<span class="dt">data=</span>a4,max)
+  t1 =<span class="st"> </span><span class="kw">aggregate</span>(<span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">~</span><span class="st"> </span>Hour, <span class="dt">data=</span>a4,sum)
+  tlist =<span class="st"> </span><span class="kw">rbind</span>(tlist,t1)
+  maxlist =<span class="st"> </span><span class="kw">rbind</span>(maxlist,maxt)
+  sumlist =<span class="st"> </span><span class="kw">list.append</span>(sumlist,a4)
+  a2 =<span class="st"> </span><span class="kw">table</span>(a11<span class="op">$</span>Hour)
+  p1 =<span class="st"> </span><span class="kw">sum</span>(a2)
+  a2 =<span class="st"> </span><span class="kw">data.frame</span>(a2)
+  a2<span class="op">$</span>Day =<span class="st"> </span><span class="kw">as.factor</span>(i)
+  a3 =<span class="st"> </span><span class="kw">rbind</span>(a3,a2)
+  p =<span class="st"> </span>p <span class="op">+</span><span class="st"> </span>p1 <span class="co">#sum people up (includes double counting across hour, usually &lt;5%)</span>
+}</code></pre></div>
+<center>
+<strong>Fig 3.1 - Extracting Relevant Data</strong>
+</center>
+<p><br></p>
+<p>In this section, we then create another <code>for</code> loop that extracts out all the relevant data for every day of the start-shutdown cycle list that we created earlier. We make use of a very powerful function available in R, called <code>distinct</code>, that as the name suggests, looks for the <strong>first</strong> new, distinct entry of whatever is specified and keeps it, and thereafter removes everything else.</p>
+<p>Remember how we arranged the data in <strong><span style="color:red">descending order of waiting time</span></strong> earlier? It comes together here in this line, <code>a11 = distinct(a1, ID, Hour)</code>, where the <code>distinct</code> function goes down the data list and keeps the <em>first</em> entry of each unique ID, which now corresponds to their <em>final</em> waiting time.</p>
+The new, relevant output of the data looks a little like this:
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+DateTime
+</th>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+Waiting Time
+</th>
+<th style="text-align:right;">
+Total Number
+</th>
+<th style="text-align:right;">
+Average
+</th>
+<th style="text-align:right;">
+Date
+</th>
+<th style="text-align:right;">
+Hour
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-13-31
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+811
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-00-35
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-03-08
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-04-19
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-05-04
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-11-03
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-17-39
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+252
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-19-12
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-19-32
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09-30 06-24-57
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+348
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+</tbody>
+</table>
+<center>
+<strong>Fig 3.2 - Sample of Final Output Data</strong>
+</center>
+<p><br></p>
+<p>Great! Now we have an entire table of every person’s final waiting time, and its split up by day. Let’s begin examining every factor.</p>
+<hr />
+</div>
+<div id="average-number-of-people" class="section level1">
+<h1>4. Average Number of People</h1>
+<p>Briging our attention back to Fig 3.1, there’s already a bunch of lines snuck in there to actually perform the counting of the total number of people in each day, by hour. It’s specifically these lines:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a2 =<span class="st"> </span><span class="kw">table</span>(a11<span class="op">$</span>Hour)
+p1 =<span class="st"> </span><span class="kw">sum</span>(a2)
+a2 =<span class="st"> </span><span class="kw">data.frame</span>(a2)
+a2<span class="op">$</span>Day =<span class="st"> </span><span class="kw">as.factor</span>(i)
+a3 =<span class="st"> </span><span class="kw">rbind</span>(a3,a2)
+p =<span class="st"> </span>p <span class="op">+</span><span class="st"> </span>p1</code></pre></div>
+<center>
+<strong>Fig 4.1 - Sample of Code from Fig 3.1</strong>
+</center>
+<p><br></p>
+<p>Essentially, we count the total number of unique IDs in each hour of a start-shutdown day. Now, to find an average daily number of people in the month of September, we sum up all the people at the bus stop by hour, and divide the total by the number of days to get an average. The final code, and graph looks a little like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a3<span class="op">$</span>Var1 =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(a3<span class="op">$</span>Var1))
+a3 =<span class="st"> </span>a3[<span class="kw">order</span>(a3<span class="op">$</span>Var1),]
+sumbyhour =<span class="st"> </span><span class="kw">aggregate</span>(Freq<span class="op">~</span>Var1, <span class="dt">data =</span> a3, sum)
+sumbyhour<span class="op">$</span>Freq =<span class="st"> </span><span class="kw">ceiling</span>(sumbyhour<span class="op">$</span>Freq<span class="op">/</span>days)
+
+<span class="co">#Creates barplots for the data, change labels (in green) to change graph titles and x/y axis labels</span>
+time_length =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sumbyhour<span class="op">$</span>Var1))
+
+g1 =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> sumbyhour, <span class="kw">aes</span>(<span class="dt">x =</span> time_length, <span class="dt">y=</span> Freq)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">fill =</span> <span class="st">&quot;seashell3&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Average Daily People Distribution (%s)&quot;</span>,mm), <span class="dt">x =</span> <span class="st">&quot;Time (Hour)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;No. of People&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> sumbyhour, <span class="kw">aes</span>(<span class="dt">label=</span>Freq, <span class="dt">y =</span> Freq <span class="op">+</span><span class="st"> </span><span class="dv">8</span>), 
+            <span class="dt">size=</span><span class="dv">4</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>), <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">limits =</span> <span class="kw">as.character</span>(sumbyhour<span class="op">$</span>Var1)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>),
+                   <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">16</span>))</code></pre></div>
+<center>
+<p><img src="People_Analysis_files/figure-html/unnamed-chunk-10-1.png" width="768" /></p>
+<strong>Fig 4.2 - Average number of people (September)</strong>
+</center>
+<p><br></p>
+<hr />
+</div>
+<div id="average-and-maximum-waiting-time" class="section level1">
+<h1>5. Average and Maximum Waiting Time</h1>
+<p>To find the average waiting time of any given person in the bus stop by hour, we perform similar calculations to that above. We sum up all the waiting time of every single person, and divide by the total number of people in the month of September. Thereafter, we display this data on an hour on hour basis, as such:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tlist =<span class="st"> </span>tlist[<span class="kw">order</span>(tlist<span class="op">$</span><span class="st">`</span><span class="dt">Hour</span><span class="st">`</span>),]
+timebyhour =<span class="st"> </span><span class="kw">aggregate</span>(<span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">~</span>Hour, <span class="dt">data =</span> tlist, sum)
+tt =<span class="st"> </span>timebyhour
+timebyhour<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span> =<span class="st"> </span><span class="kw">ceiling</span>(timebyhour<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">/</span>days)
+
+<span class="co">#Average maximum waiting time by hour</span>
+maxlist =<span class="st"> </span>maxlist[<span class="kw">order</span>(maxlist<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>),]
+maxbyhour =<span class="st"> </span><span class="kw">aggregate</span>(<span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">~</span>Hour, <span class="dt">data =</span> maxlist, sum)
+maxbyhour<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span> =<span class="st"> </span><span class="kw">ceiling</span>(maxbyhour<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">/</span>days)
+
+timebyhour<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span> =<span class="st"> </span><span class="kw">ceiling</span>(timebyhour<span class="op">$</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span><span class="op">/</span>sumbyhour<span class="op">$</span>Freq)
+time_length =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sumbyhour<span class="op">$</span>Var1))
+
+g2 =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> timebyhour, <span class="kw">aes</span>(<span class="dt">x =</span> time_length, <span class="dt">y=</span> <span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">fill =</span> <span class="st">&quot;darkslategray3&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Average Waiting Time Distribution (%s)&quot;</span>,mm), <span class="dt">x =</span> <span class="st">&quot;Time (Hour)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Time (s)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> timebyhour, <span class="kw">aes</span>(<span class="dt">label=</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span>), 
+            <span class="dt">size=</span><span class="dv">4</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>), <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">limits =</span> <span class="kw">as.character</span>(timebyhour<span class="op">$</span>Hour)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(), <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>),
+                   <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">16</span>))
+
+g3 =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> maxbyhour, <span class="kw">aes</span>(<span class="dt">x =</span> time_length, <span class="dt">y=</span> <span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">fill =</span> <span class="st">&quot;lightsteelblue&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Maximum Average Waiting Time Distribution (%s)&quot;</span>,mm), <span class="dt">x =</span> <span class="st">&quot;Time (Hour)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Time (s)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> maxbyhour, <span class="kw">aes</span>(<span class="dt">label=</span><span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">Waiting Time</span><span class="st">`</span> <span class="op">+</span><span class="st"> </span><span class="dv">30</span>), 
+            <span class="dt">size=</span><span class="dv">4</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>), <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">limits =</span> <span class="kw">as.character</span>(timebyhour<span class="op">$</span>Hour)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(), <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>),
+                   <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">16</span>))</code></pre></div>
+<center>
+<strong>Fig 5.1 - Average number of people (September)</strong>
+</center>
+<p><br></p>
+<center>
+<img src="People_Analysis_files/figure-html/unnamed-chunk-12-1.png" width="768" style="display: block; margin: auto;" /> <strong>Fig 5.2 - Average Waiting Time (September)</strong>
+</center>
+<p><br></p>
+<p>And likewise, for the maximum average waiting time, we first find out what was the longest waiting time at every hour of the day, then find the average of these maximum waiting times over the whole month:</p>
+<center>
+<img src="People_Analysis_files/figure-html/unnamed-chunk-13-1.png" width="768" /> <strong>Fig 5.3 - Maximum Average Waiting Time (September)</strong>
+</center>
+<p><br></p>
+<hr />
+</div>
+<div id="heatmap-of-people" class="section level1">
+<h1>6. Heatmap of People</h1>
+<p>In this final section, we take a deeper look at the distribution of the number of people at the bus stop, using a graphical method known as a heatmap. It’s a very useful way to observe large data trends at a glance, and more information can be found <a href="https://www.optimizely.com/optimization-glossary/heatmap/">here</a>.</p>
+<p>To do this, we pull out data of the total number of people each day created earlier, and simply plot them on a heatmap, which shows us the breakdown of people by day and hour.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heatmap_average =<span class="st"> </span><span class="kw">as.data.frame</span>(a3)
+heatmap_average<span class="op">$</span>Var1[heatmap_average<span class="op">$</span>Var1<span class="op">==</span><span class="dv">0</span>] =<span class="st"> </span><span class="dv">24</span>
+
+hour_list =<span class="st"> </span>sumbyhour<span class="op">$</span>Var1
+hour_list[<span class="dv">1</span>] =<span class="st"> </span><span class="dv">24</span>
+hour_list =<span class="st"> </span>hour_list[<span class="kw">order</span>(hour_list)]
+g4 =<span class="st"> </span><span class="kw">ggplot</span>(heatmap_average, <span class="kw">aes</span>(Var1,Day))<span class="op">+</span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq), <span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;yellow1&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;firebrick&quot;</span>)
+g4 =<span class="st"> </span>g4 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Hour&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Day&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;Number of People&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">limits =</span> hour_list) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Average Number of People at Bus Stop&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>), 
+        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
+        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
+        <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">16</span>))</code></pre></div>
+<center>
+<img src="People_Analysis_files/figure-html/unnamed-chunk-15-1.png" width="768" /> <strong>Fig 6.1 - Heatmap of People</strong>
+</center>
+<p><br></p>
+<p>For example, here we can immediately deduce that:</p>
+<ul>
+<li>Weekdays must be 3rd - 7th, 10 - 14th Sept etc., because of the <em>increased traffic people in the morning hours</em> (or people going to work)</li>
+<li>By contrast that 8th and 9th, or 15th and 16th must be weekends with a <em>massive increase in traffic in the early evening hours</em> (or people going out)</li>
+<li>We can also see that at most times the bus stop is crowded (&gt;300 people) only for a few hours a day, and at the rest of the time its mostly sparce</li>
+</ul>
+<p>Results like this can have implications on how to design the start-shutdown cycle of the bus stop, in order to save energy on air cooling for the bus stop.</p>
+<hr />
+</div>
+<div id="conclusions" class="section level1">
+<h1>7. Conclusions</h1>
+<p>As already touched upon above, concise and clear data representation allows us to make better judgements of how to move forward with the bus stop. Do check out the other bus stop temperature and PM documentation to also see how the temperature and PM data of the bus stop is retrieved.</p>
+<p>I hope this documentation helps with troubleshooting or understanding the underlying basis of the code, and future data analysis of the bus stop can be built upon this work.</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 9 December 2018</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

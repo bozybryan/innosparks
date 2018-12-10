@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+
+<title>A Brief Introduction to R</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="customblue.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">A Brief Introduction to R</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">A Brief Introduction to R</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#setting-up">Setting Up</a></li>
+      <li><a href="#installing-libraries">Installing Libraries</a></li>
+      <li><a href="#creating-a-default-graph-folder">Creating a default graph folder</a></li>
+      <li><a href="#running-code">Running Code</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="setting-up" class="section level1">
+<h1>Setting Up</h1>
+<p>Before starting anything, you’ll need to download <strong>two</strong> applications:</p>
+<ul>
+<li>Download <strong>R</strong> from the link <a href="https://cran.r-project.org/bin/windows/base/">here</a></li>
+<li>Download the integrated developer environment (IDE) <strong>RStudio</strong> <a href="https://www.rstudio.com/products/rstudio/download/">here</a></li>
+</ul>
+<p>As all data analyses conducted were written in R. When done, open up RStudio.</p>
+<p>Once RStudio has been opened, please familiarise yourself with the IDE and syntax. R is an open source programme and is highly flexible, so I would definitely recommend learning a little more about this language! Helpful tutorials can be found <a href="http://www.r-tutor.com/r-introduction">here</a> or <a href="https://www.datacamp.com/courses/free-introduction-to-r">here</a>.</p>
+</div>
+<div id="installing-libraries" class="section level1">
+<h1>Installing Libraries</h1>
+<p>Many R codes begin with <strong>importing libraries</strong>, which look like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(readr)
+<span class="kw">library</span>(dplyr)</code></pre></div>
+<p>You’ll need to download the libraries into your computer on your very <strong>first</strong> time using RStudio, as it’ll subsequently already be installed the next time you use R. To download the library, type <code>install.packages(&quot;ggplot2&quot;)</code> into the console window (below), for example to download package <code>ggplot2</code>.</p>
+</div>
+<div id="creating-a-default-graph-folder" class="section level1">
+<h1>Creating a default graph folder</h1>
+<p>All of the R codes written here will <strong>look for a default folder</strong> to automatically export all the graphs to. To help facilitate the proper function of the code, please do the following before attempting to run any code:</p>
+<blockquote>
+<p>On the desktop, create a new folder called <strong>“Graph Directory”</strong> (must be capitalised!)</p>
+</blockquote>
+<p>Any time you re-run the code, R will automatically save over the old graphs <em>only if</em> they share the same title, hence be careful when running the same code twice! Once you have run the code and produced the graphs, extract the graphs from the directory by copy-pasting all the relevant graphs to <strong>another folder</strong> so that you don’t lose the data.</p>
+</div>
+<div id="running-code" class="section level1">
+<h1>Running Code</h1>
+<p>To run R code, simply click the <code>source</code> button located on the top right section of the RStudio interface and allow the code to run. Wait about 2 minutes (for a data file of 10 million data points) and retrieve the graphs from the graph folder specified above.</p>
+<p>It’s easy to tell if the code is done; R is ready to run when you see the <code>&gt;</code> symbol in the Console interface. When R is running a code, the console interface will not have the <code>&gt;</code> symbol. To interrupt a code if necessary, click on the <code>ESC</code> key on the keyboard.</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+
+<title>Bus Stop: Temperature/PM Trends</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="customgreen.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">Bus Stop: Temperature/PM Trends</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Bus Stop: Temperature/PM Trends</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#foreword"><em>Foreword</em></a></li>
+      <li><a href="#breaking-down-the-data">1. Breaking down the data</a></li>
+      <li><a href="#temperature-and-pm-boxplots">2. Temperature and PM Boxplots</a></li>
+      <li><a href="#temperature-and-pm-mean-lines">3. Temperature and PM Mean Lines</a></li>
+      <li><a href="#conclusions">4. Conclusions</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="foreword" class="section level2">
+<h2><em>Foreword</em></h2>
+<p>This document is one of two parts (the other being the people at the <a href="https://bozybryan.github.io/innosparks/People_Analysis.html">Bus Stop people data analysis</a>). The R code referenced in this document is titled <code>bus_stop_PM_temp_analysis</code>.</p>
+<hr />
+</div>
+<div id="breaking-down-the-data" class="section level1">
+<h1>1. Breaking down the data</h1>
+<p>For the rest of this document, I’ll be using the data collected from the bus stop temperature and PM sensors in September. The data is stored as a <em>.log</em> file, which is a notepad-esque file extension that is useful in storing large amounts of text.</p>
+<p>The entire file looks a little like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;2018-09-01T06:30:36.524932</span><span class="ch">\t</span><span class="st">Outdoor Sensor Temperature :24.78&quot;</span>  
+[<span class="dv">2</span>] <span class="st">&quot;2018-09-01T06:30:36.531450</span><span class="ch">\t</span><span class="st">Indoor Sensor Temperature  :27.80&quot;</span>  
+[<span class="dv">3</span>] <span class="st">&quot;2018-09-01T06:30:36.541476</span><span class="ch">\t</span><span class="st">Indoor PM2.5 sensor :24.05&quot;</span>         
+[<span class="dv">4</span>] <span class="st">&quot;2018-09-01T06:30:36.550502</span><span class="ch">\t</span><span class="st">Indoor Temperature (urban) :24.10&quot;</span>  
+[<span class="dv">5</span>] <span class="st">&quot;2018-09-01T06:30:36.554511</span><span class="ch">\t</span><span class="st">Indoor Temperature (Display) :24.55&quot;</span>
+[<span class="dv">6</span>] <span class="st">&quot;2018-09-01T06:30:36.561028</span><span class="ch">\t</span><span class="st">Indoor PM2.5 display :12.0525&quot;</span>      
+[<span class="dv">7</span>] <span class="st">&quot;2018-09-01T06:30:36.566043</span><span class="ch">\t</span><span class="st">Outdoor PM2.5 sensor :21.70&quot;</span>    </code></pre></div>
+<center>
+<strong>Fig 1.1 - Sample of raw data</strong>
+</center>
+<p><br></p>
+<p>The bus stop sensors record readings for temperature and PM2.5 every second, and with a bit of internal calculations <em>estimate</em> the actual readings in the bus stop. Assuming that the weather every day is more or less the same, we are only then interested in the readings between the different hours of the day.</p>
+<p>While the data looks slightly convoluted, there’s essential information we need to extract from here, which includes:</p>
+<ul>
+<li><span style="color:blue">Time</span> - The hour and minute of the recorded data</li>
+<li><span style="color:blue">Hourmin</span> - A numeric representation of time (i.e. <em>0615 hrs</em> becomes <em>6.25</em>, <em>1230 hrs</em> becomes <em>12.5</em>). This is useful in re-arranging time in a consecutive order later</li>
+<li><span style="color:blue">Temperature</span> - Both ambient (outdoor) and internal (indoor) temperature conditions</li>
+<li><span style="color:blue">PM2.5</span> - Again, both outdoor and indoor conditions</li>
+</ul>
+<p>The first part of our code is to extract the time:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(full) =<span class="st"> &quot;Entry&quot;</span>
+full<span class="op">$</span>Hour =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">substr</span>(full<span class="op">$</span>Entry,<span class="dv">12</span>,<span class="dv">13</span>))
+full<span class="op">$</span>minute =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">substr</span>(full<span class="op">$</span>Entry,<span class="dv">15</span>,<span class="dv">16</span>))</code></pre></div>
+<center>
+<strong>Fig 1.2a - Extracting Data</strong>
+</center>
+<p><br></p>
+<p>Next, we do the same for the temperature and PM2.5. This is done via a 1-to-1 word match, and R uses a method like <code>vlookup</code> in Excel to extract all the data that comes after the information we search, which in this case is the temperature and PM data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ID2.<span class="dv">5</span> =<span class="st"> </span>full[<span class="kw">grep</span>(<span class="st">&quot;Indoor PM2.5 display&quot;</span>, full<span class="op">$</span>Entry),]
+ID2.<span class="dv">5</span><span class="op">$</span>PM =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">sub</span>(<span class="st">&quot;(?i).*display </span><span class="ch">\\</span><span class="st">:*&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, ID2.<span class="dv">5</span><span class="op">$</span>Entry))
+
+OD2.<span class="dv">5</span> =<span class="st"> </span>full[<span class="kw">grep</span>(<span class="st">&quot;Outdoor PM2.5 display&quot;</span>, full<span class="op">$</span>Entry),]
+OD2.<span class="dv">5</span><span class="op">$</span>PM =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">sub</span>(<span class="st">&quot;(?i).*display </span><span class="ch">\\</span><span class="st">:*&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, OD2.<span class="dv">5</span><span class="op">$</span>Entry))
+
+IDTemp =<span class="st"> </span>full[<span class="kw">grep</span>(<span class="st">&quot;Indoor Temperature </span><span class="ch">\\</span><span class="st">(Display</span><span class="ch">\\</span><span class="st">) :&quot;</span>, full<span class="op">$</span>Entry),]
+IDTemp<span class="op">$</span>Temperature =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">sub</span>(<span class="st">&quot;(?i).*</span><span class="ch">\\</span><span class="st">(Display</span><span class="ch">\\</span><span class="st">) </span><span class="ch">\\</span><span class="st">:*&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, IDTemp<span class="op">$</span>Entry))
+
+ODTemp =<span class="st"> </span>full[<span class="kw">grep</span>(<span class="st">&quot;Outdoor Temperature </span><span class="ch">\\</span><span class="st">(Display</span><span class="ch">\\</span><span class="st">)&quot;</span>, full<span class="op">$</span>Entry),]
+ODTemp<span class="op">$</span>Temperature =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">sub</span>(<span class="st">&quot;(?i).*</span><span class="ch">\\</span><span class="st">(Display</span><span class="ch">\\</span><span class="st">) </span><span class="ch">\\</span><span class="st">:*&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, ODTemp<span class="op">$</span>Entry))</code></pre></div>
+<center>
+<strong>Fig 1.2b - Extracting Data</strong>
+</center>
+<p><br></p>
+<p>Next we look at the start and shutdown cycle of the bus stop urban unit to get an idea of how to organise the data.</p>
+<p>The cooling unit turns on from <strong>0630 to 2330 hrs</strong> every day, and hence to arrange the data into hourly groups, we sort data from 0630 - 0729 to group <code>hour1 = 6.5</code>, and 0730 - 0829 to group <code>hour1 = 7.5</code> and so on.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full<span class="op">$</span>Hourmin =<span class="st"> </span>full<span class="op">$</span>Hour<span class="op">+</span><span class="st"> </span>full<span class="op">$</span>minute<span class="op">/</span><span class="dv">60</span>
+full =<span class="st"> </span><span class="kw">subset</span>(full, <span class="st">`</span><span class="dt">Hourmin</span><span class="st">`</span> <span class="op">&gt;=</span><span class="st"> </span><span class="fl">6.5</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Hourmin</span><span class="st">`</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">23.5</span>)
+full<span class="op">$</span>Hour1 =<span class="st"> </span><span class="kw">floor</span>(full<span class="op">$</span>Hourmin<span class="op">-</span><span class="fl">0.5</span>)<span class="op">+</span><span class="fl">0.5</span></code></pre></div>
+<center>
+<strong>Fig 1.3 - Placing data into groups</strong>
+</center>
+<p><br></p>
+<p>Once this is done, we are ready to begin representing the relevant data.</p>
+<hr />
+</div>
+<div id="temperature-and-pm-boxplots" class="section level1">
+<h1>2. Temperature and PM Boxplots</h1>
+<p>Boxplots (or Box and Whiskers Plot) are powerful graphs that tell users <strong>at a glance</strong> what the spread of the data observed. For data like temperature and PM, this is a very useful representation because the data is full of <em>random errors (statistical noise) and outliers</em>.</p>
+<p>We hence first plot out boxplots for both indoor and outdoor conditions of temperature and PM2.5 in the bus stop. A useful guide to reading boxplots can be found <a href="https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51">here</a>.</p>
+<p>Here, a small section of the Outdoor Temperature code is found (as the rest of the codes are repeats of this):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ODTempT =<span class="st"> </span>ODTemp[<span class="kw">order</span>(ODTemp<span class="op">$</span>Hour1),]
+ODTempT<span class="op">$</span>Hour1 =<span class="st"> </span><span class="kw">as.factor</span>(ODTempT<span class="op">$</span>Hour1)
+ODTempM =<span class="st"> </span><span class="kw">aggregate</span>(Temperature <span class="op">~</span><span class="st"> </span>Hour1, ODTemp, median)
+g4 =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> ODTempT, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Hour1</span><span class="st">`</span>, <span class="dt">y=</span><span class="st">`</span><span class="dt">Temperature</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightcoral&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Outdoor Temperature (%s)&quot;</span>, mm), <span class="dt">x =</span> <span class="st">&quot;Time (Hour)&quot;</span>, <span class="dt">y =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;Temperature [&quot;</span>,degree,<span class="st">&quot;C]&quot;</span>))) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> ODTempM, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(Temperature,<span class="dv">1</span>), <span class="dt">x =</span> Hour1 <span class="op">-</span><span class="st"> </span><span class="fl">5.5</span>, <span class="dt">y =</span> Temperature <span class="op">-</span><span class="st"> </span><span class="fl">0.2</span>), 
+            <span class="dt">size=</span><span class="dv">3</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>), <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">23</span>,<span class="dv">36</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>))</code></pre></div>
+<p><br></p>
+<p>The subsequent graphs look like this:</p>
+<div id="section" class="section level4 tabset">
+<h4></h4>
+<div id="indoor-pm2.5" class="section level5">
+<h5>Indoor PM2.5</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="1056" />
+</center>
+</div>
+<div id="outdoor-pm2.5" class="section level5">
+<h5>Outdoor PM2.5</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="1056" />
+</center>
+</div>
+<div id="indoor-temp" class="section level5">
+<h5>Indoor Temp</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-8-1.png" width="1056" />
+</center>
+</div>
+<div id="outdoor-temp" class="section level5">
+<h5>Outdoor Temp</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-9-1.png" width="1056" />
+</center>
+</div>
+<div id="delta-temp" class="section level5">
+<h5>Delta Temp</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-10-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-1" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 2.1 - Indoor and Outdoor Boxplots</strong>
+</center>
+<p><br></p>
+<p>So what exactly are we looking at? Let’s briefly break it down:</p>
+<ul>
+<li><strong><span style="color:red">Box</span></strong> - Represents data between the <strong>25th and 75th percentile</strong> (i.e. the middle 50% of the data lies between the box). This tells us how <em>evenly spread</em> the data is.</li>
+<li><strong><span style="color:red">Middle Line</span></strong> - Represents the <a href="https://www.diffen.com/difference/Mean_vs_Median">median</a> of the data at that hour. Is far more useful for skewed or outlier-heavy data sets like this one.</li>
+<li><strong><span style="color:red">Vertical Lines</span></strong> - Represents the <strong>1st and 99th percentile</strong> point of the data. This tell us how <em>widely spread</em> the data is.</li>
+<li><strong><span style="color:red">Dots</span></strong> - Represents outliers in the data (i.e. &lt;1st Percentile, &gt; 99th Percentile). This data is normally ignored from calculations.</li>
+</ul>
+<p>Let’s explain using the outdoor temperature boxplot. We can draw conclusions from this September data set for example, noting that the output temperatures have a asymmetrical spread in the morning (7.5 to 10.5 hours), and in general has an even spread of 2 degrees across the day.</p>
+<p>We also have a plot that contains both temperature and PM2.5 data respectively on the same plot, which looks as such.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OD2.5T =<span class="st"> </span>OD2.<span class="dv">5</span>[<span class="kw">order</span>(OD2.<span class="dv">5</span><span class="op">$</span>Hour1),]
+OD2.5T<span class="op">$</span>Hour1 =<span class="st"> </span><span class="kw">as.factor</span>(OD2.5T<span class="op">$</span>Hour1)
+OD2.5M =<span class="st"> </span><span class="kw">aggregate</span>(PM <span class="op">~</span><span class="st"> </span>Hour1, OD2.<span class="dv">5</span>, median)
+OD2.5T<span class="op">$</span>Category =<span class="st"> &quot;1. Outdoor&quot;</span>
+ID2.5T =<span class="st"> </span>ID2.<span class="dv">5</span>[<span class="kw">order</span>(ID2.<span class="dv">5</span><span class="op">$</span>Hour1),]
+ID2.5T<span class="op">$</span>Hour1 =<span class="st"> </span><span class="kw">as.factor</span>(ID2.5T<span class="op">$</span>Hour1)
+ID2.5M =<span class="st"> </span><span class="kw">aggregate</span>(PM <span class="op">~</span><span class="st"> </span>Hour1, ID2.<span class="dv">5</span>, median)
+ID2.5T<span class="op">$</span>Category =<span class="st"> &quot;2. Indoor&quot;</span>
+
+CD2.<span class="dv">5</span> =<span class="st"> </span><span class="kw">rbind</span>(OD2.5T, ID2.5T)
+<span class="kw">theme_set</span>(<span class="kw">theme_gray</span>(<span class="dt">base_size =</span> <span class="dv">20</span>))
+g5 =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> CD2.<span class="dv">5</span>, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Hour1</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">PM</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="st">`</span><span class="dt">Category</span><span class="st">`</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Indoor and Outdoor PM2.5 (%s)&quot;</span>, mm), <span class="dt">x =</span> <span class="st">&quot;Time (Hour)&quot;</span>) <span class="op">+</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> ID2.5M, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(PM,<span class="dv">1</span>), <span class="dt">x =</span> Hour1 <span class="op">-</span><span class="st"> </span><span class="fl">5.3</span>, <span class="dt">y =</span> PM <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), 
+            <span class="dt">size=</span><span class="dv">4</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>), <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> OD2.5M, <span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(PM,<span class="dv">1</span>), <span class="dt">x =</span> Hour1 <span class="op">-</span><span class="st"> </span><span class="fl">5.7</span>, <span class="dt">y =</span> PM <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="co">#adjust label position accordingly</span>
+            <span class="dt">size=</span><span class="dv">4</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="fl">0.4</span>),  <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">90</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>))</code></pre></div>
+<p>The code is again rather straightforward, with a simple additional code at the start to classify the data as <code>outdoor</code> or <code>indoor</code>. The produced graph becomes:</p>
+</div>
+<div id="section-2" class="section level4 tabset">
+<h4></h4>
+<div id="combined-pm2.5" class="section level5">
+<h5>Combined PM2.5</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-12-1.png" width="1536" />
+</center>
+</div>
+<div id="combined-temperature" class="section level5">
+<h5>Combined Temperature</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-13-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-3" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 2.2 - Combined PM2.5 and Temperatures</strong>
+</center>
+<p><br></p>
+<p>Let’s use the PM2.5 graph as an example to explain some observations. For this data set, we can see that the PM2.5 data set is <em>full</em> of outliers, and a large majority of the PM2.5 is in reality &lt;25. When comparing between both the indoor and outdoor PM2.5, we can see a reduction across the board, and can easily prove the efficacy of the urban unit in removing PM2.5 from the ambient air.</p>
+<hr />
+</div>
+</div>
+<div id="temperature-and-pm-mean-lines" class="section level1">
+<h1>3. Temperature and PM Mean Lines</h1>
+<p>Besides boxplots, we can also represent the data as more conventional line plots. This is where the previous column, <code>hourmin</code> comes in. The plot basically represents the temperature/PM2.5 for the time span of the day from 0600 to 0000 (or 2400 hrs).</p>
+<p>As there are about 30 or so days in the month, every single minute contains 30 distinct points, and the plot then draws a <strong>best-fit line</strong> automatically to best represent the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c_Temp =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">ceiling</span>(<span class="kw">quantile</span>(ODTempT<span class="op">$</span>Temperature,.<span class="dv">9</span>))<span class="op">+</span><span class="dv">1</span>)
+f_Temp =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">floor</span>(<span class="kw">quantile</span>(IDTempT<span class="op">$</span>Temperature,.<span class="dv">1</span>))<span class="op">-</span><span class="dv">1</span>)
+
+x3 =<span class="st"> </span><span class="fl">0.1</span><span class="op">*</span>(<span class="kw">mean</span>(IDTempT<span class="op">$</span>Temperature))
+x4 =<span class="st"> </span><span class="fl">0.1</span><span class="op">*</span>(<span class="kw">mean</span>(ODTempT<span class="op">$</span>Temperature))
+
+p3=<span class="kw">ggplot</span>(<span class="dt">data =</span> IDTempT, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">`</span><span class="dt">Hourmin</span><span class="st">`</span>, <span class="dt">y=</span><span class="st">`</span><span class="dt">Temperature</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">span =</span> x3, <span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">colour =</span> <span class="st">&quot;dodgerblue1&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="kw">sprintf</span>(<span class="st">&quot;Mean Indoor Temperature (%s)&quot;</span>, mm), <span class="dt">x =</span> <span class="st">&quot;Time of Day&quot;</span>, <span class="dt">y =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;Temperature [&quot;</span>,degree,<span class="st">&quot;C]&quot;</span>)))
+
+g33 =<span class="st"> </span>p3<span class="op">+</span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">2</span>))<span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(f_Temp,c_Temp,<span class="fl">0.5</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),
+                   <span class="dt">panel.grid.major.x =</span> <span class="kw">element_blank</span>(),
+                   <span class="dt">panel.border =</span> <span class="kw">element_blank</span>(),<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">18</span>),
+                   <span class="dt">axis.line.x =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>),
+                   <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(f_Temp,c_Temp))</code></pre></div>
+<p>Again, as all the code is more or less the same, and we have the best fit curves as such:</p>
+<div id="section-4" class="section level4 tabset">
+<h4></h4>
+<div id="indoor-pm2.5-1" class="section level5">
+<h5>Indoor PM2.5</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-15-1.png" width="1056" />
+</center>
+</div>
+<div id="outdoor-pm2.5-1" class="section level5">
+<h5>Outdoor PM2.5</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-16-1.png" width="1056" />
+</center>
+</div>
+<div id="indoor-temp-1" class="section level5">
+<h5>Indoor Temp</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-17-1.png" width="1056" />
+</center>
+</div>
+<div id="outdoor-temp-1" class="section level5">
+<h5>Outdoor Temp</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-18-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-5" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 3.1 - Best fit Mean PM2.5 and Temperature</strong>
+</center>
+<p><br></p>
+<p>Because the data set is full of outliers that can “throw-off” a best fit line that gives equal weightage even to <em>bad</em> data, we implement a floor and ceiling for the best fit curve to follow (i.e. the curve should ignore data that lie outside this ceiling and floor).</p>
+<p>We represent this as <code>c_Temp</code> and <code>f_Temp</code> for temperature for example, and we set the ceiling and floor to be the 90th and 10th percentile of the data respectively.</p>
+<p>Finally, we have a double-plot version of the graph again, which is represented below:</p>
+</div>
+<div id="section-6" class="section level4 tabset">
+<h4></h4>
+<div id="combined-pm2.5-1" class="section level5">
+<h5>Combined PM2.5</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-19-1.png" width="1056" />
+</center>
+</div>
+<div id="combined-temperature-1" class="section level5">
+<h5>Combined Temperature</h5>
+<center>
+<img src="TemperaturePM_Analysis_files/figure-html/unnamed-chunk-20-1.png" width="1056" />
+</center>
+</div>
+</div>
+<div id="section-7" class="section level4">
+<h4></h4>
+<center>
+<strong>Fig 3.2 - Combined Mean PM2.5 and Temperatures</strong>
+</center>
+<p><br></p>
+<p>Let’s use the temperature graphs as an example. From here, we can see a sort of continuous trend of temperature increasing throughout the morning and reaching a peak in the late afternoon, before dropping again at night. We can also easily see that performance isn’t doing too well - the indoor temperatures tend to only be a maximum of 3 degrees lower than the ambient temperature.</p>
+<hr />
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>4. Conclusions</h1>
+<p>Many such other conclusions can be drawn from this simple data representation. Do also check out the other data documentation regarding the people data in the bus stop.</p>
+<p>I hope this documentation helps with troubleshooting or understanding the underlying basis of the code, and future data analysis of the bus stop can be built upon this work.</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 9 December 2018</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

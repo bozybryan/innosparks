@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Bryan Ong" />
+
+<meta name="date" content="2018-11-23" />
+
+<title>Ozone Prototyping Summary</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+
+<link rel="stylesheet" href="customred.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Homepage</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Setting_up_R.html">Setting up R</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code Documentation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Airbitat Bus Stop</li>
+    <li>
+      <a href="People_Analysis.html">People Analysis</a>
+    </li>
+    <li>
+      <a href="TemperaturePM_Analysis.html">Temperature/PM Analysis</a>
+    </li>
+    <li class="dropdown-header">Airbitat Portable</li>
+    <li>
+      <a href="General_Analysis.html">General Documentation</a>
+    </li>
+    <li>
+      <a href="Portable_Heatmap.html">Temperature Heatmaps</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Water Disinfection
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Ozone_Analysis.html">Ozone Analysis</a>
+    </li>
+    <li>
+      <a href="Other_Chemical_Analyses.html">Other Chemical Analyses</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="About.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+
+<div id="header">
+<h1 class="title">Ozone Prototyping Summary</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Ozone Prototyping Summary</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#foreword"><em>Foreword</em></a></li>
+      <li><a href="#introduction">1. Introduction</a></li>
+      <li><a href="#theoretical-background">2. Theoretical Background</a><ul>
+      <li><a href="#understanding-bioactivity-biofilm-and-bad-smells">2.1 - Understanding bioactivity, biofilm and bad smells</a></li>
+      <li><a href="#ozone-disinfection">2.2 - Ozone Disinfection</a></li>
+      <li><a href="#measuring-the-amount-of-ozone-in-water">2.3 - Measuring the amount of Ozone in water</a></li>
+      <li><a href="#measuring-the-effectiveness-of-ozone">2.4 - Measuring the effectiveness of Ozone</a></li>
+      </ul></li>
+      <li><a href="#proof-of-concept-phase">3. Proof of Concept Phase</a><ul>
+      <li><a href="#running-the-blackbox">3.1 - Running the Blackbox</a></li>
+      <li><a href="#portable-airbitat-phase">3.2 - Portable Airbitat Phase</a></li>
+      <li><a href="#shutdown-phase">3.3 - Shutdown Phase</a></li>
+      <li><a href="#summary-of-design-considerations">3.4 - Summary of Design Considerations</a></li>
+      </ul></li>
+      <li><a href="#long-term-testing">4. Long Term Testing</a><ul>
+      <li><a href="#ozone-efficacy">4.1 - Ozone Efficacy</a></li>
+      <li><a href="#water-test-analysis">4.2 - Water Test Analysis</a></li>
+      <li><a href="#other-examined-parameters">4.3 - Other examined parameters</a></li>
+      </ul></li>
+      <li><a href="#conclusions">5. Conclusions</a></li>
+      <li><a href="#appendix">6. Appendix</a><ul>
+      <li><a href="#figures-from-section-4.1">6.1 - Figures from Section 4.1</a></li>
+      <li><a href="#figures-from-section-4.2">6.2 - Figures from Section 4.2</a></li>
+      </ul></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="foreword" class="section level2">
+<h2><em>Foreword</em></h2>
+<p>All raw data used in this report can be found in the folder titled <code>Ozone Data</code>, and is found in a mixture of .csv and .txt files which are named accordingly by date.</p>
+<hr />
+</div>
+<div id="introduction" class="section level1">
+<h1>1. Introduction</h1>
+<p>All evaporative coolers, including the Airbitat and its various platforms, suffer from long term degradation issues. To alleviate and potentially resolve this issue, the dosing of <strong>ozone</strong> into the Airbitat was explored in order to solve four primary problems:</p>
+<ul>
+<li>The <span style="color:blue">growth of bioactivity</span> in the water tank</li>
+<li>The <span style="color:blue">growth of biofilm</span> in the water tank</li>
+<li>The <span style="color:blue">development of a fishy smell</span> in the evaporative pads</li>
+<li>The subsequent need to perform <span style="color:blue">regular, on site maintenance </span> of Airibtat units</li>
+</ul>
+<p>In the use of ozone testing from the 3 month period of <strong>9th July</strong> to <strong>30th October</strong>, it was found that ozone had a <em>limited</em> effectiveness in slowing down the buildup of bioactivity and biofilm in the Airbitat portable, as well as being <em>ineffective</em> in solving foul smells from developing. This report details a comprehensive summary of the results - scroll from the sidebar on the left to go straight to relevant sections.</p>
+<hr />
+</div>
+<div id="theoretical-background" class="section level1">
+<h1>2. Theoretical Background</h1>
+<div id="understanding-bioactivity-biofilm-and-bad-smells" class="section level2">
+<h2>2.1 - Understanding bioactivity, biofilm and bad smells</h2>
+<p>Bioactivity and by extension, biofilm, are indicators of the uncontrolled growth water-borne bacteria.</p>
+<center>
+<img src="biofilm.jpg" /> <br> <strong>Fig 2.1 - Bioactivity in Airbitat Water Tank</strong>
+</center>
+<p><br> For example in the picture above, there are a few indicators to pick up on that showcase this bioactivity in action:</p>
+<ul>
+<li><strong>Biofilm</strong> - the buildup of a <em>green layer</em> on the walls of the water tank surface</li>
+<li><strong>Biofilm</strong> - the slight <em>off-green hue</em> observed in the water</li>
+<li><strong>Bioactivity</strong> - the presence of <em>white bubbling</em> on the surface of the water</li>
+<li><strong>Bioactivity</strong> - the <em>fishy smell</em> in the water (not pictured)</li>
+</ul>
+<p>Bioactivity and biofilm have negative repercussions - in particular, <a href="https://www.cdc.gov/legionella/about/causes-transmission.html">Legionella bacteria</a> are <strong>extremely hazardous to human health</strong> and must be actively mitigated by any means of disinfection, and is the primary concern of evaporative coolers as they spread via water droplets in the air. Additionally, fouling of the evaporative media pads resulting from bio-activity and bacteria growth contribute to <strong>foul smelling units</strong> after about 6 months of regular operation.</p>
+</div>
+<div id="ozone-disinfection" class="section level2">
+<h2>2.2 - Ozone Disinfection</h2>
+<p>There are many commercially available methods of disinfection in the market, and this <a href="https://www.lenntech.com/processes/disinfection/disinfection.htm">useful guide by Lenntech</a> gives a quick overview to how these various methods work in disinfecting water in the industry.</p>
+<p>Ozone was selected in its ability to simultaneously <strong>destroy biofilm</strong> and <strong>kill water-borne bacteria</strong> due to its high oxidative properties. Additionally, ozone is generated on site via a quartz-based ozone generator, and is theoretically able to passively disinfect the water in the water tank without active maintenance.</p>
+<center>
+<img src="ozone.jpg" /> <br> <strong>Fig 2.2 - Quartz Ozone Generator</strong>
+</center>
+<p><br></p>
+<p>Ozone is administered into the water tank via a <strong>Venturi valve</strong>, which makes use of flowing water through a valve to “force” gaseous ozone to dissolve into the water, which forms disinfective aqeuous ozone.</p>
+<p>It is important to note that ozone normally escapes readily into the atmosphere from water (having a very low Henry’s constant of 0.011 mol/kg.bar) and hence is mostly lost into the surrounding air when bubbled into water - it must be produced in large amounts or better dissolved through other means to allow it to counteract this phenomenon in order to disinfect the water effectively.</p>
+</div>
+<div id="measuring-the-amount-of-ozone-in-water" class="section level2">
+<h2>2.3 - Measuring the amount of Ozone in water</h2>
+<p>Determining the <strong>amount</strong> of ozone in the water is done indirectly through the measurement of the <a href="http://www.ozoneapplications.com/info/orp.htm">Oxidation-Reduction Potential</a> (ORP) of the water. In a nutshell, ORP measures the level of “oxidative power” a fluid has, and usually operates on a scale of -1000 to 1000 mV, with ozone normally operating at about <strong>600-700 mV</strong> in disinfective pools.</p>
+<p>A scale of ozone concentrations to ORP can be seen as such:</p>
+<center>
+<img src="ORP.jpg" /> <br> <strong>Fig 2.3 - Ozone correlation with ORP</strong>
+</center>
+<p><br></p>
+<p>In general, conentration of ozone in water (in parts-per-million, or ppm, where 1 ppm = 1 mg Ozone/L of Water) tends to have a logarithmic relationshiop with ORP, and hence as ORP approaches 800 mV or so, ozone concentrations rise disproportionately. ORP is hence a very useful indication of how much ozone is in the water at any point of time, and subsequently how “disinfective” the water is.</p>
+</div>
+<div id="measuring-the-effectiveness-of-ozone" class="section level2">
+<h2>2.4 - Measuring the effectiveness of Ozone</h2>
+<p>In order to determine the <strong>effectiveness</strong> of any chemical-based disinfection, a <a href="https://www.cleanwaterstore.com/blog/ct-values-explained/">Concentration-Time (CT) measurement</a> scale is used. Every bacteria strain has an associated CT value, which gives an idea of how “tough” it is to kill that bacteria. CT is calculated based on:</p>
+<blockquote>
+<p>Concentration of disinfective agent (mg/L) x Contact Time (min)</p>
+</blockquote>
+<p>Additionally, a CT value of a bacteria is determined by <em>log-removal</em>, where a 1-log removal is 90%, 2-log is 99%, 3-log is 99.9% and so on. To illustrate this, let’s look at Legionella bacteria - it has a CT value of about <strong>1.6 for 2 log removal</strong>.</p>
+<p>This means that in order to kill 99% of Legionella bacteria in water, we would either employ 0.16mg/L of Ozone for 10 minutes (0.16 x 10 = 1.6), or even 0.04mg/L of Ozone for 40 minutes (0.04 x 40 = 1.6) and so on. As long as each combination of time and chemical dosing has a product of 1.6, we can guarentee a 99% removal of Legionella.</p>
+<p>Hence, by employing measurements of ORP together with CT, we can deduce how long the disinfection cycle must be for the theoretical ozone system to be employed in the Airbitat portable.</p>
+<hr />
+</div>
+</div>
+<div id="proof-of-concept-phase" class="section level1">
+<h1>3. Proof of Concept Phase</h1>
+<p>In the next section, the following factors were hypothesized; and their influence on the amount of ozone in the water was measured:</p>
+<ul>
+<li><strong>Flow rate of water</strong> - Increases the <em>Venturi effect</em> to allow more ozone to be pulled into the water</li>
+<li><strong>Production rate of ozone</strong> - Increases the absolute amount of ozone in the air, and hence the amount being pulled into the water</li>
+<li><strong>Presence of static mixer</strong> - Breaks up large air bubbles, increasing the surface area to volume ratio of air bubbles to water, allowing more ozone to dissolve in the water</li>
+<li><strong>Flowing through evaporative media</strong> - Allowing ozonated water to flow through the evaporative media reduces the amount ozone buid up in water as ozone is lost to the air as water evaporates on the evaporative media</li>
+</ul>
+<p>The final, theoretical set up to utilise ozone in a portable unit is sketched below:</p>
+<center>
+<img src="ozonepnd.jpg" /> <br> <strong>Fig 2.4 - Ozone P&amp;ID Diagram</strong>
+</center>
+<p><br></p>
+<p>Prior to moving into a portable test phase, a “proof-of-concept” was first carried out on a smaller, replica system (which will be referred to as a <em>blackbox</em>) to in order to determine the preliminary performance of the ozone units, and what to expect on a larger Airbitat portable system later on.</p>
+<div id="running-the-blackbox" class="section level2">
+<h2>3.1 - Running the Blackbox</h2>
+<div id="presence-of-a-static-mixer" class="section level3">
+<h3>3.1.1 - Presence of a static mixer</h3>
+<p>Prior to measuring with the ORP meter, an aqeuous ozone measuring probe (in mg/L) was utilised and used to compare between a configuration with the Static Mixer, and one without.</p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-2-1.png" width="1056" /> <strong>Fig 3.1 - Comparing Static Mixer</strong>
+</center>
+<p><br></p>
+<p>As observed, the presence of the static mixer allows a much greater concentration of ozone to dissolve in the water - and hence for subsequent set ups of the ozone tests a static mixer was <em>always</em> used.</p>
+<p><br></p>
+</div>
+<div id="comparing-between-different-ozone-generator-sizes-blackbox" class="section level3">
+<h3>3.1.2 - Comparing between different ozone generator sizes (blackbox)</h3>
+<p>The blackbox construction was outfitted with a simple ozone generator that pumped ozone into a water hose via a venturi, and the ozonated water was then either sent straight back into the water tank or through an evaporative media. A graph of ORP to time is summarised below:</p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-3-1.png" width="1056" /> <strong>Fig 3.2 - Comparing Blackbox Data</strong>
+</center>
+<p><br></p>
+<p>The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:red">500mg/h</span></strong> and <strong><span style="color:green">1000mg/h</span></strong> ozone generators, there is a much greater build up of ozone in the water tank for the larger ozone generator.</li>
+<li>In comparing the <strong><span style="color:blue">1000mg/h + EM (evaporative media)</span></strong> and <strong><span style="color:green">1000mg/h</span></strong> ozone generators, there is a slightly lower build up of ozone in the water tank when it has to go through an evaporative media first.</li>
+<li>Across all three graphs, there tends to be a logarithmic increase in ORP as time increases, which actually suggests a linear increase in ozone concentrations in the water (as stated earlier in Section 2.4) as time goes on.</li>
+</ul>
+<p>With this blackbox set up, we are also able to determine that the maximum amount of ozone in the water after 50 minutes should hover around 700 mV or so for the exact same set up. Thereafter, we move on to conducting tests in a Airbitat Portable system.</p>
+<p><br> <br></p>
+</div>
+</div>
+<div id="portable-airbitat-phase" class="section level2">
+<h2>3.2 - Portable Airbitat Phase</h2>
+<p>In the following set ups, it would be useful to refer to the following table to understand what the labels represent:</p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Abbreviation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>500/1000/2000 mg</td>
+<td>Size of ozone generated by generator per hour</td>
+</tr>
+<tr class="even">
+<td>EM</td>
+<td>Ozonated water goes through MCU evaporative media</td>
+</tr>
+<tr class="odd">
+<td>HRU</td>
+<td>Ozonated water gets pumped to HRU</td>
+</tr>
+<tr class="even">
+<td><em>None</em></td>
+<td>Ozonated water is just pumped straight to water tank</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p><br></p>
+<div id="comparing-between-different-ozone-generator-sizes-portable" class="section level3">
+<h3>3.2.1 - Comparing between different ozone generator sizes (portable)</h3>
+<p>In performing comparison tests for the Portable unit, we continue to first subject similar conditions found in the blackbox to the Portable unit to test if similar conclusions (and replicability) can be drawn.</p>
+<p><br></p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-4-1.png" width="1056" /> <strong>Fig 3.3 - Comparing Portable Data without EM</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:red">1000mg/h</span></strong> and <strong><span style="color:green">2000mg/h</span></strong> ozone generators, there is again a larger build up of ozone in the bigger generator - however both units <em>taper off</em> to similar levels after 40 minutes or so.</li>
+<li>In comparing the <strong><span style="color:blue">2000mg/h + EM</span></strong> and <strong><span style="color:green">2000mg/h</span></strong> ozone generators, there is again a lower amount of ozone if the system has to go through the evaporative media first.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="comparing-between-em-and-hru-conditions" class="section level3">
+<h3>3.2.2 - Comparing between EM and HRU conditions</h3>
+<p>Next, we test the amount of ozone losses as it goes through the evaporative media (MCU), as opposed to just the top fan area (HRU).</p>
+<p><br></p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-5-1.png" width="1056" /> <strong>Fig 3.4 - Comparing Portable Data against HRU</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:red">2000mg + EM/h</span></strong> and <strong><span style="color:green">3000mg + EM/h</span></strong> ozone generators, there is a very marginal increase in ozone in the water despite the larger ozone generator, suggesting that increasing the ozone concentration is no longer the <strong>limiting factor</strong> in getting concentrations of ozone up.</li>
+<li>In comparing the <strong><span style="color:blue">2000mg/h + HRU</span></strong> and <strong><span style="color:red">2000mg/h + EM</span></strong> ozone generators, there is a larger amount of ozone in the water even when it goes to the HRU, suggesting that most of the ozone losses are experienced in the MCU evaporative media.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="comparing-between-blackbox-and-portable" class="section level3">
+<h3>3.2.3 - Comparing between Blackbox and Portable</h3>
+<p>Finally, we compare between the ideal blackbox and portable cases.</p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="1056" /> <strong>Fig 3.5 - Comparing the Portable unit with the Blackbox</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:red">Blackbox 1000mg/h</span></strong> and <strong><span style="color:green">Portable 1000mg/h</span></strong> ozone generators, there is <strong>lower</strong> amount of ozone in the water as compared to the blackbox set up, suggesting that there are additional losses of ozone in the portable unit on top of that already experienced in the water tank alone.</li>
+<li>In comparing the <strong><span style="color:blue">1000mg/h + HRU</span></strong> and <strong><span style="color:green">1000mg/h</span></strong> ozone generators, there is also a lower amount of ozone in the water, suggesting that HRU loses are still significant in the portable set up.</li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="shutdown-phase" class="section level2">
+<h2>3.3 - Shutdown Phase</h2>
+<p>Aside from ozone build up, ozone die-down is also measured. This provides information about the rate of losses of aqeuous ozone to the atmosphere, and gives an idea about how to structure a future on/off cycle for the ozone generator in the design of a ozone disinfection system.</p>
+<p>Designing for an on/off cycle means maximising ozone disinfection (i.e. reaching required CT) in the on cycle, before turning off the ozone generator to allow the generator to cool down; then repeating this cycle continuously to ensure long-term disinfection of the water. Below are some of the results of this test:</p>
+<br>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="1056" /> <strong>Fig 3.6 - Comparing various shutdown cycles</strong>
+</center>
+<p><br></p>
+<p>Despite the different initial conditions of each set up, they all exhibit similar die-down rates of ozone which go to about <strong>300 mV after 30 minutes</strong>, demonstrating that the rate of ozone loss to the atmosphere is indepedent of the size of the ozone generator, or size of water tank (blackbox and portable have different water tank sizes). Rate of ozone losses to the atmosphere is likely a function of the surface area of the water, which is consistent across the different set ups.</p>
+<p><br></p>
+</div>
+<div id="summary-of-design-considerations" class="section level2">
+<h2>3.4 - Summary of Design Considerations</h2>
+<p>As such, with the factors tested and identified, conclusions about the nature of ozone concentrations in water can be summarised as such:</p>
+<ol style="list-style-type: decimal">
+<li>The presence of a Static Mixer increases dissolution of ozone in water drastically</li>
+<li>Losses of ozone to the atmosphere is greatest in the MCU, followed by the HRU</li>
+<li>An ozone generator of 2000 mg/h is the most effective; any higher and ozone conentrations plateau</li>
+<li>Ozone losses are indepedent of the set up</li>
+</ol>
+<p>With these conclusions, the proof of concept phase is complete, and set-ups are then structured towards long-term testing.</p>
+<hr />
+</div>
+</div>
+<div id="long-term-testing" class="section level1">
+<h1>4. Long Term Testing</h1>
+<p>With the design considerations in mind, <em>three</em> ozone systems were set up for long term testing, and concentrations of ozone in the water were recorded with an ORP meter. The characteristics of the units are:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Unit 85</strong> - Control unit (no ozone set up, normal Airbitat portable unit)</li>
+<li><strong>Unit 88</strong> - 2000 mg/L ozone generator to water tank only (Without MCU Dose)</li>
+<li><strong>Unit Social Space</strong> - 2000 mg/L ozone generator to <em>both</em> the water tank and MCU directly (With MCU Dose)</li>
+</ol>
+<p>All portable units and ozone generators were run from 0700 - 2100 daily. Additionally, in order to accelerate the growth of bioactivity and development of foul smells in the unit (to simulate a “worst-case” scenario), the default <strong>75 minute drying cycle</strong> that occur automatically after a unit shuts down was <strong>turned off</strong>, to force the evaporative pads to remain moist and develop bacteria overnight.</p>
+<p>The effectiveness of the ozone treatment was determined in two quantitative measures: ORP of water reached every day (Section 4.1), and the standard plate count (SPC) of the water (Section 4.2). Other parameters of the water were also tested to ascertain various parameters (Sections 4.2 and 4.3).</p>
+<div id="ozone-efficacy" class="section level2">
+<h2>4.1 - Ozone Efficacy</h2>
+<p>The ozone generator was set up and programmed to run automatically with an <a href="https://www.arduino.cc/en/Guide/HomePage">Arduino</a>. The electrical diagram and a copy of the Arduino code found in Figures 6.1 and 6.2 respectively in the Appendix. Both ozone generators were set up to turn on automatically when the Airbitat portable was ready with the High-Capacity pump turned on.</p>
+<p><br></p>
+<div id="without-mcu-dosing-unit-88" class="section level3">
+<h3>4.1.1 - Without MCU Dosing: Unit 88</h3>
+<p>In the first two weeks (Week 1 and 2), Unit 88 was run with the ozone generator undergoing a cycle throughout the day of being <strong>turned on for 60 minutes</strong>, and <strong>turned off for 60 minutes</strong> (60/60).</p>
+<p>After a brief evaluation of the rate of ozone die-down, it was determined that the ozone genertor cycle could be modified without significant effects on the theoretical disinfection rate, hence the ozone generator cycle was change permanently to being turned on for 60 minutes and turned off for 60 minutes in the <strong>first cycle</strong>, before being <em>switched</em> to <strong>60 minutes on and 100 minutes off</strong> (60/100) in the subsequent cycles - shutdown was extended to allow more time for the generator to cool off and hence increase the lifespan of the equipment.</p>
+<p>Below is a sample of the results from three different days of three different weeks:</p>
+<br>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-8-1.png" width="1056" /> <strong>Fig 4.1 - Comparing the different weeks of Unit 88</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:red">Week 1</span></strong> and <strong><span style="color:green">Week 3</span></strong>, we can observe the different on off cycles; despite there being a shorter cycle in Week 1 (meaning more ozone in the water), both cycles are able to reach a maximum ORP of about 600, indicating both on/off cycle are able to pump equal amounts of ozone into the water tank.</li>
+<li>In comparing the <strong><span style="color:blue">Week 4</span></strong> and <strong><span style="color:green">Week 3</span></strong> set ups, we see a slightly higher ORP peak in the later week at about 650, demonstrating that the ozone generator is still performing well after one month in operation.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="with-mcu-dosing-unit-social-space-ss" class="section level3">
+<h3>4.1.2 - With MCU Dosing: Unit Social Space (SS)</h3>
+<p>The second unit set up in the social space had a similar start up and shutdown cycle of 60 minutes and 100 minutes respectively (with the first cycle being 60/60) and was additionally dosed directly to the MCU on top of just the water tank. Below are the results for two consecutive weeks:</p>
+<br>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-9-1.png" width="1056" /> <strong>Fig 4.2 - Comparing the different weeks of Unit SS</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:tomato">Week 1</span></strong> and <strong><span style="color:lightseagreen">Week 2</span></strong>, we can observe mostly similar ORP peaks of about 650 and upwards. An interesting phenomenon is seen at the first 60 minutes, where the ORP of <strong><span style="color:lightseagreen">Week 2</span></strong> seems slightly lower before it builds up properly to the same amounts. The reason for this might be the presence of initial nitrates in the water, which will be better explained in Section 4.2.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="comparing-between-units-88-and-ss" class="section level3">
+<h3>4.1.3 - Comparing between Units 88 and SS</h3>
+<p>Lastly, a comparison is done between the two units to test if MCU dosing affects the overall total amount of ozone in the water tank.</p>
+<br>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-10-1.png" width="1056" /> <strong>Fig 4.3 - Comparing Units 88 and SS</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing the <strong><span style="color:tomato">Without MCU Dose</span></strong> and <strong><span style="color:lightseagreen">With MCU Dose</span></strong> ozone generator set ups, we can observe similar ORP peaks of about 650 mV, however the baseline ORP reached between on-cycles for the <strong><span style="color:lightseagreen">MCU Dose</span></strong> is higher at about 300 mV, suggesting that ozone takes a longer time to dissipate in the system with the MCU dosing; or in other words the residual ozone in the MCU dosing system is higher.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="summary-of-ozone-orp-results" class="section level3">
+<h3>4.1.4 - Summary of Ozone ORP results</h3>
+<p>From the ozone ORP results, we can conclude the following things:</p>
+<ul>
+<li>A consistent ORP of <strong>600 mV for 40 minutes</strong> is usually reached, corresponding to about <strong>0.10 mg/L ozone</strong> (with a CT of 1.6, time required is about 16 minutes), hence disinfection requirements are met</li>
+<li>Dosing to MCU seems to reach <strong>same ORP peaks</strong> as the dosing without MCU, but in overall results in a higher baseline of residual ozone in the water</li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="water-test-analysis" class="section level2">
+<h2>4.2 - Water Test Analysis</h2>
+<p>Water samples were collected from all three units every week to measure the growth and concentration increase of various parameters in the water. The following parameters were examined in the water test:</p>
+<ul>
+<li><strong>Standard Plate Count</strong> - Measures the amount of bioactivity potentially in the water; more information <a href="https://www.fda.gov/food/foodscienceresearch/laboratorymethods/ucm063346.htm">here</a></li>
+<li><strong>Legionella</strong> - Most hazardous bacteria relevent to evaporative coolers</li>
+<li><strong>Nitrates</strong> - Ion is immediately consumed by ozone, hence its absence is an indirect measure of ozone presence in the water</li>
+<li><strong>Chlorides</strong> - Secondary ion that contributes to an increase in ORP, usually contributes to baseline ORP of water</li>
+<li><strong>Iron</strong> - Metal that precipitates in water (from pump)</li>
+<li><strong>Copper</strong> - Metal that precipitates in water (from Heat Exchanger)</li>
+<li><strong>Chemical Oxygen Demand</strong> - Indirect measure of the presence of oxidising substances in water</li>
+</ul>
+<p>To give a quick idea of idea of what ions were present, let’s look at the water sample analysis for tap water itself coming into Innosparks:</p>
+<p><br></p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SPC (cfu/mL)</td>
+<td>290</td>
+</tr>
+<tr class="even">
+<td>Legionella (cfu/mL)</td>
+<td>&lt;1</td>
+</tr>
+<tr class="odd">
+<td>Copper (mg/L)</td>
+<td>0.0072</td>
+</tr>
+<tr class="even">
+<td>Iron (mg/L)</td>
+<td>0.028</td>
+</tr>
+<tr class="odd">
+<td>Chloride (mg/L)</td>
+<td>11.6</td>
+</tr>
+<tr class="even">
+<td>Nitrates (mg/L)</td>
+<td>0.079</td>
+</tr>
+<tr class="odd">
+<td>COD (mg/L)</td>
+<td>&lt;20</td>
+</tr>
+</tbody>
+</table>
+<strong>Fig 4.4 - Raw Tap Water Conditions</strong>
+</center>
+<p><br></p>
+<p>In the following sub-sections, SPC, Nitrates, Iron and Copper will be presented. Data for <strong>Chloride and COD</strong> can be found in the Appendix (Figures 6.3 and 6.4) as the results are largely inconclusive, while results for <strong>Legionella</strong> was always &lt;1 for all units and hence omitted.</p>
+<p>Additionally, the baseline of all the units (AKA Week 0) is taken to be the inlet water conditions, as presented above in Fig 4.4.</p>
+<p><br></p>
+<div id="standard-plate-count" class="section level3">
+<h3>4.2.1 - Standard Plate Count</h3>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-11-1.png" width="1056" /> <strong>Fig 4.5 - Standard Plate Count Comparison</strong>
+</center>
+<p><br> The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing <strong>all the units</strong> with the <strong><span style="color:tomato">Baseline</span></strong>, there is always an increase in SPC.</li>
+<li>In comparing <strong><span style="color:lightseagreen">Unit 88</span></strong> and <strong><span style="color:forestgreen">Unit 85</span></strong>, there is a slower rate of SPC increase for the ozonated unit, and a sharp initial increase in the control unit, suggesting ozone is helping to keep SPC low for the first month or so, before SPC concentrations simply increase beyond the control unit.</li>
+<li>The <strong><span style="color:magenta">Social Space Unit</span></strong> seems to offer a decrease in SPC after two weeks, however a lack of sufficient results means that a trend cannot be observed.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="nitrates" class="section level3">
+<h3>4.2.2 - Nitrates</h3>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-12-1.png" width="1056" /> <strong>Fig 4.6 - Nitrate Comparison</strong>
+</center>
+<p><br></p>
+<p>Note that nitrate concentrations were not tested for the <strong><span style="color:magenta">Social Space Unit</span></strong>. The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing <strong>all the units</strong> with the <strong><span style="color:tomato">Baseline</span></strong>, there is always an increase in nitrates. This happens as fresh water coming into the system regularly carries nitrates and constantly accumulates in the water tank, simultaneously as the system evaporates water throughout the day.</li>
+<li>However, in comparing <strong><span style="color:lightseagreen">Unit 88</span></strong> and <strong><span style="color:forestgreen">Unit 85</span></strong>, there is a much larger accumulation of nitrates in the control unit, suggesting that ozone must be consuming some of the accumulated nitrates in the ozonated unit and keeping nitrate concentrations close to baseline.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="iron" class="section level3">
+<h3>4.2.3 - Iron</h3>
+<p><br></p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-13-1.png" width="1056" /> <strong>Fig 4.7 - Iron Comparison</strong>
+</center>
+<p><br></p>
+<p>The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing <strong>all the units</strong> with the <strong><span style="color:tomato">Baseline</span></strong>, there is always a general decrease in iron.</li>
+<li>In comparing <strong><span style="color:lightseagreen">Unit 88</span></strong> and <strong><span style="color:forestgreen">Unit 85</span></strong>, there seems to be a more rapid decrease in iron in the ozonated unit, suggesting that ozone might be consuming some iron in the system as compared to the control unit.</li>
+<li>However, comparing the <strong><span style="color:magenta">Social Space Unit</span></strong> and <strong><span style="color:forestgreen">Unit 85</span></strong> disproves the above hypothesis as the opposite trend is observed, suggesting that iron is consumed by something else in the system.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="copper" class="section level3">
+<h3>4.2.4 - Copper</h3>
+<p><br></p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-14-1.png" width="1056" /> <strong>Fig 4.8 - Copper Comparison</strong>
+</center>
+<p><br></p>
+<p>The following conclusions can be drawn:</p>
+<ul>
+<li>In comparing <strong>all the units</strong> with the <strong><span style="color:tomato">Baseline</span></strong>, there is always a general incrase in copper.</li>
+<li>In comparing <strong><span style="color:lightseagreen">Unit 88</span></strong> and <strong><span style="color:forestgreen">Unit 85</span></strong>, there seems to be a more rapid increase in copper in the ozonated unit, suggesting ozone might contribute to the deposition of copper metal in the water.</li>
+<li>This is somewhat confirmed when comparing the <strong><span style="color:magenta">Social Space Unit</span></strong> and <strong><span style="color:forestgreen">Unit 85</span></strong> as the same trend is observed.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="summary-of-water-test-results-with-respect-to-ozone-efficacy" class="section level3">
+<h3>4.2.5 - Summary of Water Test results with respect to ozone efficacy</h3>
+<p>In the end, ozone efficacy in terms of the water test can be concluded as such:</p>
+<ul>
+<li>Ozone helps to reduce the rate of SPC growth in the water, albeit only for <strong>up to one month</strong></li>
+<li>Ozone seems to accelerate the rate on copper deposition in the water, and is <em>wasted</em> in consuming nitrates present in the water (cross confirmed with the initial low ORP bump see at the start of all ORP cycles)</li>
+<li>There is no clear correlation between ozone and COD, chlorides (see Figures 6.4 and 6.5 in Appendix) as well as iron in the water</li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="other-examined-parameters" class="section level2">
+<h2>4.3 - Other examined parameters</h2>
+<div id="ozone-in-the-air" class="section level3">
+<h3>4.3.1 - Ozone in the Air</h3>
+<p>Ozone that is lost into the surrounding air is considered a toxic substance, and there are hence concentrations limits imposed which can be found <a href="https://www.ozonesolutions.com/info/osha-and-ozone">here</a>. Brief tests were run on <strong>Unit 88</strong> with ozone air samples being tracked with a specialised gaseous ozone probe. Ozone was tracked in three places, namely:</p>
+<ul>
+<li><strong>MCU</strong> - 1 metre away from the front panel of the unit</li>
+<li><strong>HRU</strong> - Directly on top of the top panel of the unit</li>
+<li><strong>Overflow</strong> - Directly underneath the <em>overflow line</em> of the unit</li>
+</ul>
+<p>Results are as follows:</p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-15-1.png" width="1056" /> <strong>Fig 4.9 - Ozone Air Concentrations</strong>
+</center>
+<p><br></p>
+<p>As immediately apparent, ozone concentrations at the <strong><span style="color:magenta">overflow line</span></strong> exceed the minimum safety limits and hence pose an issue with utilising an ozone-based treatment in the long term, especially in enclosed areas. Nonetheless, the air blown at the other parts of the unit do not exceed safety limits. While other air-side ozone tests were also recorded, they are omitted from this report as they present similar trends and conclusions stated here.</p>
+<p><br></p>
+</div>
+<div id="smell-of-drying-pads" class="section level3">
+<h3>4.3.2 - Smell of drying pads</h3>
+<p>One of the most important qualitative measures of the efficacy of the system is the “fishy smell” of the Airbitat system, especially that coming from the evaporative pads in the MCU. This smell usually develops as a result of certain bacteria strains found in the water.</p>
+<p>It was determined through trial and error that smell from the pads can be best identified under the following conditions:</p>
+<ol style="list-style-type: decimal">
+<li>The pump has to be <strong>turned off</strong>, so that there is no fresh water running through the evaporative pads to mask the smell</li>
+<li>The fans have to be <strong>turned on</strong> so that the pads are drying out</li>
+<li>The smell will be strongest when the pads are in a <em>semi-dry</em> state, which usually takes around 20-30 minutes after the pumps are turned off</li>
+</ol>
+<p>With these parameters observed, the qualtitative results were recorded down as such:</p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Duration</th>
+<th>Smell</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>85 (Control)</td>
+<td>1 Week</td>
+<td>Extremely foul stench</td>
+</tr>
+<tr class="even">
+<td>88 (Without MCU Dose)</td>
+<td>1 Week</td>
+<td>Foul smell</td>
+</tr>
+<tr class="odd">
+<td>88 (Without MCU Dose)</td>
+<td>2 Weeks</td>
+<td>Foul smell</td>
+</tr>
+<tr class="even">
+<td>88 (Without MCU Dose)</td>
+<td>4 Weeks</td>
+<td>Very foul smell</td>
+</tr>
+<tr class="odd">
+<td>SS (With MCU Dose)</td>
+<td>1 Week</td>
+<td>Foul smell</td>
+</tr>
+<tr class="even">
+<td>SS (With MCU Dose)</td>
+<td>2 Weeks</td>
+<td>Foul smell</td>
+</tr>
+</tbody>
+</table>
+<strong>Fig 4.10 - Evaporative Media Smell</strong>
+</center>
+<p><br></p>
+<p>In the end, it was qualtitatively determined that while both the ozone systems (88 and SS) helped to delay the developing of an extremely foul stench found in the control system, it was ineffective in alleviating or preventing the foul smell from developing.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>5. Conclusions</h1>
+<p>Through the extensive study performed with ozone over the 3 month period, the following information was determined:</p>
+<ol style="list-style-type: decimal">
+<li>Ozone delayed the development of <span style="color:blue">bioactivity</span> for about 4 weeks</li>
+<li>Ozone is undetermined in its ability to prevent <span style="color:blue">biofilm</span> for about 4 weeks (none developed for all units in the 4 week period)</li>
+<li>Ozone is unable to prevent the development of a <span style="color:blue">fishy smell</span> after 1 week</li>
+</ol>
+<p>With this study complete, it was concluded that the ozone disinfection system was deemed to be <strong>ineffective</strong> with the Airbitat portable system because it was unable to fundamentally solve bioactivity and smell issues; other chemical methods would have to be explored to alleviate the large issues faced by the Airbitat portable system, which would also have implications for solutions that can be exported to the other Airbitat platforms.</p>
+<p>The next solution explored was a Chlorine based treatment, which can be further followed up upon in the <strong><span style="color:blue">Chlorine Documentation Summary</span></strong> file.</p>
+<hr />
+</div>
+<div id="appendix" class="section level1">
+<h1>6. Appendix</h1>
+<div id="figures-from-section-4.1" class="section level2">
+<h2>6.1 - Figures from Section 4.1</h2>
+<center>
+<img src="Electrical.jpg" /> <br> <strong>Fig 6.1 - Electrical Diagram for Ozone Generator Set-up</strong>
+</center>
+<p><br></p>
+<pre><code>
+const unsigned int ledPin1 = 2; // Sets pin 2 as the output power for relay 1
+const unsigned int ledPin2 = 4; // Sets pin 4 as the output power for relay 2
+const unsigned int ledPin3 = 7; // Sets pin 7 as output power for relay 3
+
+// Time, where 1000 ms = 1s
+const unsigned long OnDelay = 120000; // Set first switch on delay time as 2 mins (for both relay and ORP)
+// DC (ledPin1) is set for normally open (HIGH sets as on)
+// DC (ledPin2) is set for normally open (HIGH sets as on)
+
+void setup()
+{
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+  digitalWrite(ledPin1, LOW);
+  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
+  delay(OnDelay);
+  
+}
+
+void loop()
+{
+  unsigned long now = millis();
+
+if (now &lt; (3600000 + OnDelay)){ //for the first 1 hour
+
+  digitalWrite(ledPin1, HIGH);
+  digitalWrite(ledPin2, HIGH);
+  digitalWrite(ledPin3, HIGH);
+}
+
+else { //for the next 10+1 hours
+    if(now &lt; 39600000 + OnDelay){
+    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin3, LOW);
+    }
+    
+    if(now &gt; 39600000 + OnDelay){
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
+  }
+}
+}</code></pre>
+<center>
+<strong>Fig 6.2 - Arduino Code with SSR on Pin 2,4 and 7</strong>
+</center>
+<p><br></p>
+</div>
+<div id="figures-from-section-4.2" class="section level2">
+<h2>6.2 - Figures from Section 4.2</h2>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-16-1.png" width="1056" /> <strong>Fig 6.3 - Chloride Comparison</strong>
+</center>
+<p><br></p>
+<center>
+<img src="Ozone_Analysis_files/figure-html/unnamed-chunk-17-1.png" width="1056" /> <strong>Fig 6.4 - Chemical Oxygen Demand Comparison</strong>
+</center>
+<p><br></p>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Bryan Ong</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 23 November 2018</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
