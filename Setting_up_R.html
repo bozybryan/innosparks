@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link rel="icon" href="https://bozybryan.github.io/innosparks/favicon.ico"/>
+
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
@@ -164,17 +164,25 @@ $(document).ready(function () {
     <h2><a href="#content">A Brief Introduction to R</a></h2>
     <div id="text-table-of-contents">
       <ul>
-      <li><a href="#setting-up">Setting Up</a></li>
-      <li><a href="#installing-libraries">Installing Libraries</a></li>
-      <li><a href="#creating-a-default-graph-folder">Creating a default graph folder</a></li>
-      <li><a href="#running-code">Running Code</a></li>
+      <li><a href="#setting-up">1. Setting up</a><ul>
+      <li><a href="#installing-r">1.1 - Installing R</a></li>
+      <li><a href="#installing-libraries">1.2 - Installing Libraries</a></li>
+      <li><a href="#creating-a-default-graph-folder">1.3 - Creating a default graph folder</a></li>
+      </ul></li>
+      <li><a href="#running-r">2. Running R</a><ul>
+      <li><a href="#merging-the-source-file">2.1 - Merging the source file</a></li>
+      <li><a href="#finding-the-import-file-location">2.2 - Finding the import file location</a></li>
+      <li><a href="#running-the-code">2.3 - Running the Code</a></li>
+      </ul></li>
       </ul>
     </div>
 </div>
 
 <div id="main">
 <div id="setting-up" class="section level1">
-<h1>Setting Up</h1>
+<h1>1. Setting up</h1>
+<div id="installing-r" class="section level2">
+<h2>1.1 - Installing R</h2>
 <p>Before starting anything, you’ll need to download <strong>two</strong> applications:</p>
 <ul>
 <li>Download <strong>R</strong> from the link <a href="https://cran.r-project.org/bin/windows/base/">here</a></li>
@@ -183,26 +191,71 @@ $(document).ready(function () {
 <p>As all data analyses conducted were written in R. When done, open up RStudio.</p>
 <p>Once RStudio has been opened, please familiarise yourself with the IDE and syntax. R is an open source programme and is highly flexible, so I would definitely recommend learning a little more about this language! Helpful tutorials can be found <a href="http://www.r-tutor.com/r-introduction">here</a> or <a href="https://www.datacamp.com/courses/free-introduction-to-r">here</a>.</p>
 </div>
-<div id="installing-libraries" class="section level1">
-<h1>Installing Libraries</h1>
+<div id="installing-libraries" class="section level2">
+<h2>1.2 - Installing Libraries</h2>
 <p>Many R codes begin with <strong>importing libraries</strong>, which look like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">library</span>(readr)
 <span class="kw">library</span>(dplyr)</code></pre></div>
 <p>You’ll need to download the libraries into your computer on your very <strong>first</strong> time using RStudio, as it’ll subsequently already be installed the next time you use R. To download the library, type <code>install.packages(&quot;ggplot2&quot;)</code> into the console window (below), for example to download package <code>ggplot2</code>.</p>
 </div>
-<div id="creating-a-default-graph-folder" class="section level1">
-<h1>Creating a default graph folder</h1>
+<div id="creating-a-default-graph-folder" class="section level2">
+<h2>1.3 - Creating a default graph folder</h2>
 <p>All of the R codes written here will <strong>look for a default folder</strong> to automatically export all the graphs to. To help facilitate the proper function of the code, please do the following before attempting to run any code:</p>
 <blockquote>
 <p>On the desktop, create a new folder called <strong>“Graph Directory”</strong> (must be capitalised!)</p>
 </blockquote>
 <p>Any time you re-run the code, R will automatically save over the old graphs <em>only if</em> they share the same title, hence be careful when running the same code twice! Once you have run the code and produced the graphs, extract the graphs from the directory by copy-pasting all the relevant graphs to <strong>another folder</strong> so that you don’t lose the data.</p>
+<hr />
 </div>
-<div id="running-code" class="section level1">
-<h1>Running Code</h1>
+</div>
+<div id="running-r" class="section level1">
+<h1>2. Running R</h1>
+<div id="merging-the-source-file" class="section level2">
+<h2>2.1 - Merging the source file</h2>
+<p>The codes are designed to read <strong>one</strong> merged file (be it a .csv or .log file). First and foremost, copy all the files of the same type (i.e. portable data should not be mixed with bus stop data) into the <strong>same</strong> folder. Let’s presume that we’ve copied all the files into a folder called [combine] in the desktop.</p>
+<p>The folder’s directory should then be [C:/Users/Public/Desktop/combine]. Next:</p>
+<ol style="list-style-type: decimal">
+<li>Open the command prompt (type <strong>cmd</strong> into the desktop search bar)</li>
+<li>In command prompt, set the command directory to the folder location (type <strong>cd C:/Users/Public/Desktop/combine</strong>)</li>
+<li>In command prompt, combine all the files into a merged file (type <strong>combine *.csv mergedfile.csv</strong>)</li>
+<li>This creates a combined file called [mergedfile.csv]</li>
+<li>If the file is a .log file, just replace all the .csv above in steps 1-3 with .log</li>
+</ol>
+<p>Now we have one merged file. Next, we need to help R locate this file.</p>
+</div>
+<div id="finding-the-import-file-location" class="section level2">
+<h2>2.2 - Finding the import file location</h2>
+<p>All the codes have a beginning section that looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ================================================</span>
+
+<span class="co"># Please edit both the location of the CSV file (default location being the desktop)</span>
+<span class="co"># Also edit the month of the data</span>
+
+fulldata =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;C:/Users/Public/Desktop/combine/mergedfile.csv&quot;</span>)
+mm =<span class="st"> &quot;September&quot;</span> <span class="co">#only change label</span>
+
+
+<span class="co"># ================================================</span></code></pre></div>
+<p>This function, <code>read_csv</code>, or <code>read_table</code> for the bus stop PM/Temp file, automatically reads a .csv/.log file extension into a format that R can process. Remember the merged file earlier? To help R find this file, we need to type in the <strong>exact file name</strong> into the function.</p>
+<p>Locate the correct file location and type that into the brackets. To do so quickly, simply right click the name of the folder like:</p>
+<div class="figure">
+<img src="ss.png" />
+
+</div>
+<p>And select the [Copy address as text] option, then paste it into the file directory in R. Please take note of two common mistakes when copying the file directory:</p>
+<ol style="list-style-type: decimal">
+<li>The file location must be typed <strong>between inverted commas</strong> (i.e. “C:/Users/” etc. and NOT plainly C:/Users/)</li>
+<li>R file locations must be typed in the <strong>front slash</strong> (i.e. C:/Users/ etc. and NOT C:\Users\etc.)</li>
+</ol>
+<p>Don’t forget to also change the label of the month you’re evaluating for the <code>bus_stop</code> files (i.e. change label from September to October as prompted in the code).</p>
+</div>
+<div id="running-the-code" class="section level2">
+<h2>2.3 - Running the Code</h2>
 <p>To run R code, simply click the <code>source</code> button located on the top right section of the RStudio interface and allow the code to run. Wait about 2 minutes (for a data file of 10 million data points) and retrieve the graphs from the graph folder specified above.</p>
-<p>It’s easy to tell if the code is done; R is ready to run when you see the <code>&gt;</code> symbol in the Console interface. When R is running a code, the console interface will not have the <code>&gt;</code> symbol. To interrupt a code if necessary, click on the <code>ESC</code> key on the keyboard.</p>
+<p>If there is any error, RStudio will prompt a warning in the Console interface. Do troubleshoot accordingly, as the errors likely come from any of the mistakes stated earlier.</p>
+<p>R is ready to run when you see the <code>&gt;</code> symbol in the Console interface. When R is running a code, the console interface will not have the <code>&gt;</code> symbol. To interrupt a code if necessary, click on the <code>ESC</code> key on the keyboard. Once R is done running the code, a prompt saying <code>&quot;Code Complete&quot;</code> should be seen in the command console.</p>
+</div>
 </div>
 </div>
 
