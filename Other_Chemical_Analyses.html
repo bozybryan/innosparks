@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link rel="icon" href="https://bozybryan.github.io/innosparks/favicon.ico"/>
+
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
@@ -899,24 +899,41 @@ Foul Smell
 <ol style="list-style-type: decimal">
 <li><p><strong>Metal oxidation</strong> - The iron (pump) and copper (heat exchanger) based parts in the Airbitat will need to be examined for long term damage, as chlorine should over time corrode and cause the metal to pit. For example, a paper examining chlorine damage on steel can be found <a href="http://cdn.intechopen.com/pdfs/33625/intech-corrosive_effects_of_chlorides_on_metals.pdf">here</a>.</p></li>
 <li><p><strong>Non-metal corrosion</strong> - Other non-metal parts like rubber and PVC should be normally resistant to chlorine corrosion, however some long term damage or deposition might be observed nonetheless and should be visually inspected.</p></li>
-<li><p><strong>Efficacy in preventing biofilm growth</strong> - While proven effective in lowering the amount of bioactivity, chlorine has not been fully measured in preventing biofilm growth from a clean unit, and hence should be further evaluated in this area for potential efficacy.</p></li>
+<li><p><strong>Efficacy in preventing biofilm growth</strong> - While proven effective in lowering the amount of bioactivity, chlorine has not been fully measured in preventing biofilm growth from a clean unit (though based on pictures, the weekly chlorine-dosed unit (Social Space) seems to take longer to develop biofilm than the zinc units (85 and 88))</p></li>
 </ol>
 </div>
 <div id="pending-zinc-questions" class="section level3">
 <h3>6.2.2 - Pending zinc questions</h3>
 <p>Because zinc is still not well understood in its function, there are more miscellaneous questions to address with the use of zinc:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Compatibility with other metals</strong> - As zinc ions are discharged into the water, it should naturally deposit onto more electropositive metals, hence the iron (pump) and copper (heat exchanger) based parts need to be examined for zinc deposition</p></li>
+<li><p><strong>Compatibility with other metals</strong> - As zinc ions are discharged into the water, it should naturally deposit onto more electropositive metals, hence the iron (pump) and copper (heat exchanger) based parts need to be examined for zinc deposition, though at the 6 week mark there is no evidence of zinc deposition anywehre.</p></li>
 <li><p><strong>Zinc Resistance</strong> - Zinc ion efficacy in disinfection will diminish over time (as with any other essential metal ion) as the bacteria begins to develop a <em>resistance mechanism</em> to the metal ion. Resistance mechanisms are never fully understood, but papers such as that found <a href="https://www.researchgate.net/publication/228332042_Zinc_resistance_mechanisms_in_bacteria">here</a> offer a bit of insight to zinc resistence specifically. With regards to the Airbitat, an exact period of time it takes for water-borne bacteria to develop zinc resistance needs to be quantified.</p></li>
-<li><p><strong>Zinc lifespan</strong> - A followup to the previous point, besides ascertaining how long the bacteria takes to develop a sizeable resistance to zinc, we also need to determine how long a zinc anode can last in the water tank before it needs to be replaced.</p></li>
+<li><p><strong>Zinc lifespan</strong> - A followup to the previous point, besides ascertaining how long the bacteria takes to develop a sizeable resistance to zinc, we also need to determine how long a zinc anode can last in the water tank before it needs to be replaced (1 year according to sunflower manufacturer)</p></li>
+<li><p><strong>Efficacy in preventing biofilm growth</strong> - Same as the chlorine above, zinc does not seem very effective in preventing biofilm growth.</p></li>
 </ol>
 </div>
 <div id="pending-misc.-questions" class="section level3">
 <h3>6.2.3 - Pending misc. questions</h3>
 <p>There are additional, untested chemicals that have yet to be tested and can be explored should the zinc option become especially expensive:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Copper/Silver Anode</strong> - As useful starting point to investigate would be to explore pool operators that use this technology, such as that found <a href="https://apsp.org/Portals/0/RWQ%20Fact%20Sheets/Copper-Silver%20Ionizers%20-%20July%2029,%202014.pdf">here</a>. While it was initially concluded to be infeasible due to cost, it is included here for documentation.</li>
+<li><p><strong>Copper/Silver Anode</strong> - As useful starting point to investigate would be to explore pool operators that use this technology, such as that found <a href="https://apsp.org/Portals/0/RWQ%20Fact%20Sheets/Copper-Silver%20Ionizers%20-%20July%2029,%202014.pdf">here</a>. While it was initially concluded to be infeasible due to cost, it is included here for documentation.</p></li>
+<li><p><strong>Chlorine/Zinc Suppliers</strong> - While granular trichlor and the zinc sunflower are being used at the moment, there are alternatives to both suppliers available online. An alternative for example for the granular trichlor would be to custom-make 1.5g trichlor tablets, and for zinc it would be to use other sacrificial zinc anodes. However, both methods while feasibile in theory <em>must be</em> re-evaluated in efficacy with the methods above to ensure replicability of the disinfection results.</p></li>
+<li><p><strong>Zinc and Chlorine compatibility</strong> - A granular trichlor dose of 1.5g was done for the weekly dosed ordinary unit (SS), and for the zinc unit which had been running for 6 weeks without dosing (88), and the free chlorine results are depicted below:</p></li>
 </ol>
+<center>
+<img src="Other_Chemical_Analyses_files/figure-html/unnamed-chunk-7-1.png" width="768" /> <br> <strong>Fig 6.2 - Free Chlorine Comparison with and without zinc</strong>
+</center>
+<p><br></p>
+<p>The maximum free chlorine observerable by the free chlorine meter is 2.5 ppm, hence the results for chlorine above 2.5ppm are estimated. Nevertheless, there seems to be an obvious conclusion to draw:</p>
+<ul>
+<li>There is less free chlorine available in <strong><span style="color:tomato">Unit 88 (With Zinc Sunflower)</span></strong> as compared to <strong><span style="color:cadetblue">Social Space (Without Zinc)</span></strong>, suggesting that the <em>chlorine demand</em> of the former unit is higher, resulting in chlorine being consumed.</li>
+</ul>
+<p>There are likely <strong>two</strong> sources of chlorine demand in the zinc sunflower unit that are different from the weekly-dosed social space unit:</p>
+<ul>
+<li><p><strong>Presence of Zinc Metal</strong> - Chlorine can react with the aqeuous zinc ions to form soluble zinc chloride. Zinc chloride is thankfully not hazardous, but should nevertheless be <strong>further investigated into</strong> to determine if it can severely reduce the amount of chlorine available for disinfection.</p></li>
+<li><p><strong>More bioactivity in unit 88</strong> - As the zinc unit had not been dosed in 6 weeks as compared to the social space unit that is dosed every week, more chlorine might have been consumed to kill increased amount of bacteria and bioactivity. This needs to be cross-verified with the water test results (which will be between SSG5 (before dose),SSG6 (after dose) and 88I6 (before dose), 88I7 (after dose)).</p></li>
+</ul>
+<p>Additional compability tests between chlorine and zinc might need to be tested if the amount of free chlorine in the unit becomes too low over time.</p>
 <hr />
 </div>
 </div>
